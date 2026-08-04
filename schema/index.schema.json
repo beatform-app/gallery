@@ -1,0 +1,122 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/beatform-app/gallery/main/schema/index.schema.json",
+  "title": "Beatform Gallery Registry",
+  "description": "The registry consumed by the Beatform app. Every entry describes one piece of reviewed community content, pinned to an immutable commit and verified by SHA-256 before it is ever parsed.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "entries"],
+  "properties": {
+    "schemaVersion": {
+      "description": "Version of THIS registry format. The app refuses registries newer than it understands.",
+      "const": 1
+    },
+    "entries": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/entry" }
+    }
+  },
+  "$defs": {
+    "entryId": {
+      "type": "string",
+      "description": "Stable slug. Lowercase letters, digits and single hyphens; never reused for different content.",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+      "minLength": 3,
+      "maxLength": 64
+    },
+    "sha256": {
+      "type": "string",
+      "description": "Lowercase hex SHA-256 digest of the referenced file's exact bytes.",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "contentUrl": {
+      "type": "string",
+      "description": "Commit-pinned raw URL into this repository. The 40-hex commit SHA makes the content immutable by construction.",
+      "pattern": "^https://raw\\.githubusercontent\\.com/beatform-app/gallery/[0-9a-f]{40}/(looks|themes)/[a-z0-9]+(-[a-z0-9]+)*\\.(avpreset|avtheme)$"
+    },
+    "previewUrl": {
+      "type": "string",
+      "description": "Commit-pinned raw URL to a preview image stored under previews/ in this repository.",
+      "pattern": "^https://raw\\.githubusercontent\\.com/beatform-app/gallery/[0-9a-f]{40}/previews/[a-z0-9]+(-[a-z0-9]+)*\\.(png|jpg)$"
+    },
+    "semver": {
+      "type": "string",
+      "description": "Plain semantic version (MAJOR.MINOR.PATCH).",
+      "pattern": "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)$"
+    },
+    "entry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "type",
+        "name",
+        "description",
+        "author",
+        "license",
+        "contentUrl",
+        "sha256",
+        "sizeBytes",
+        "minAppVersion",
+        "schemaVersion"
+      ],
+      "properties": {
+        "id": { "$ref": "#/$defs/entryId" },
+        "type": {
+          "description": "Content type. Extensible in later registry versions (shader, builder-stack).",
+          "enum": ["look", "theme"]
+        },
+        "name": { "type": "string", "minLength": 1, "maxLength": 80 },
+        "description": { "type": "string", "minLength": 1, "maxLength": 500 },
+        "author": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["name"],
+          "properties": {
+            "name": { "type": "string", "minLength": 1, "maxLength": 80 },
+            "url": {
+              "type": "string",
+              "pattern": "^https://",
+              "maxLength": 200
+            }
+          }
+        },
+        "license": {
+          "description": "License granted by the submitter for the content file and preview.",
+          "enum": ["CC0-1.0", "CC-BY-4.0"]
+        },
+        "contentUrl": { "$ref": "#/$defs/contentUrl" },
+        "sha256": { "$ref": "#/$defs/sha256" },
+        "sizeBytes": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 33554432,
+          "description": "Exact byte size of the content file. The app enforces this as a download limit before hashing."
+        },
+        "minAppVersion": { "$ref": "#/$defs/semver" },
+        "schemaVersion": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Schema version of the CONTENT file format (.avpreset schemaVersion, or .avtheme projectSchemaVersion), so the app can refuse content it cannot parse without downloading it."
+        },
+        "preview": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["url", "sha256"],
+          "properties": {
+            "url": { "$ref": "#/$defs/previewUrl" },
+            "sha256": { "$ref": "#/$defs/sha256" }
+          }
+        },
+        "tombstone": {
+          "type": "boolean",
+          "description": "True when the entry has been removed from circulation. Tombstoned entries stay in the index forever so IDs are never silently reused."
+        },
+        "replacedBy": {
+          "$ref": "#/$defs/entryId",
+          "description": "ID of the entry that supersedes this one, if any."
+        }
+      }
+    }
+  }
+}
