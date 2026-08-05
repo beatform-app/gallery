@@ -32,7 +32,7 @@
     "contentUrl": {
       "type": "string",
       "description": "Commit-pinned raw URL into this repository. The 40-hex commit SHA makes the content immutable by construction.",
-      "pattern": "^https://raw\\.githubusercontent\\.com/beatform-app/gallery/[0-9a-f]{40}/(looks|themes)/[a-z0-9]+(-[a-z0-9]+)*\\.(avpreset|avtheme)$"
+      "pattern": "^https://raw\\.githubusercontent\\.com/beatform-app/gallery/[0-9a-f]{40}/(looks|themes)/[a-z0-9]+(-[a-z0-9]+)*\\.(bfpreset|bftheme)$"
     },
     "previewUrl": {
       "type": "string",
@@ -97,7 +97,7 @@
         "schemaVersion": {
           "type": "integer",
           "minimum": 1,
-          "description": "Schema version of the CONTENT file format (.avpreset schemaVersion, or .avtheme projectSchemaVersion), so the app can refuse content it cannot parse without downloading it."
+          "description": "Schema version of the CONTENT file format (.bfpreset schemaVersion, or .bftheme projectSchemaVersion), so the app can refuse content it cannot parse without downloading it."
         },
         "preview": {
           "type": "object",

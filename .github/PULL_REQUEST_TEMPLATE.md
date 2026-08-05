@@ -6,11 +6,11 @@
 
 ## Checklist
 
-- [ ] Content file added under the correct folder: `looks/<entry-id>.avpreset` or `themes/<entry-id>.avtheme`, filename equal to the entry `id`.
+- [ ] Content file added under the correct folder: `looks/<entry-id>.bfpreset` or `themes/<entry-id>.bftheme`, filename equal to the entry `id`.
 - [ ] Entry appended to `index.json` following the worked example in the README.
 - [ ] `sha256` and `sizeBytes` in the entry match the file exactly. To compute the hash:
-  - Windows: `certutil -hashfile looks\<entry-id>.avpreset SHA256`
-  - macOS/Linux: `shasum -a 256 looks/<entry-id>.avpreset`
+  - Windows: `certutil -hashfile looks\<entry-id>.bfpreset SHA256`
+  - macOS/Linux: `shasum -a 256 looks/<entry-id>.bfpreset`
 - [ ] `contentUrl` (and `preview.url`) are pinned to the 40-hex commit SHA that adds the files.
 - [ ] Preview image included at `previews/<entry-id>.png` or `.jpg`, at most 512 KB, showing the content actually running.
 - [ ] License chosen: `CC0-1.0` or `CC-BY-4.0` (no other values are accepted).

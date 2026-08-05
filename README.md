@@ -8,8 +8,8 @@ The gallery is deliberately boring infrastructure: one JSON registry (`index.jso
 
 | Folder | Contents |
 | --- | --- |
-| `looks/` | `.avpreset` files — a named snapshot of one visual mode's parameters and sync settings ("looks"). |
-| `themes/` | `.avtheme` files — full shareable templates: metadata plus a complete project document (styles, background, overlays, timeline scenes, post chain). |
+| `looks/` | `.bfpreset` files — a named snapshot of one visual mode's parameters and sync settings ("looks"). |
+| `themes/` | `.bftheme` files — full shareable templates: metadata plus a complete project document (styles, background, overlays, timeline scenes, post chain). |
 | `previews/` | One preview image per entry (PNG or JPEG, at most 512 KB). |
 | `schema/` | The JSON Schema describing `index.json`. |
 | `scripts/` | The dependency-free validator that CI runs. |
@@ -31,12 +31,12 @@ Removal never deletes: an entry that has to go is marked with `"tombstone": true
 Submissions are pull requests, and every PR is reviewed by the repository owner before merge. The flow:
 
 1. **Fork** this repository.
-2. **Export** your look or theme from Beatform (`.avpreset` for a look, `.avtheme` for a theme).
-3. **Pick an ID**: a lowercase slug like `midnight-phonk`, 3–64 characters, letters/digits/single hyphens. The content file must be named after it: `looks/<id>.avpreset` or `themes/<id>.avtheme`.
+2. **Export** your look or theme from Beatform (`.bfpreset` for a look, `.bftheme` for a theme).
+3. **Pick an ID**: a lowercase slug like `midnight-phonk`, 3–64 characters, letters/digits/single hyphens. The content file must be named after it: `looks/<id>.bfpreset` or `themes/<id>.bftheme`.
 4. **Add a preview**: `previews/<id>.png` or `.jpg`, at most 512 KB, showing the look actually running.
 5. **Append an entry** to `index.json` (see the worked example below). Compute the SHA-256 and byte size of your files:
-   - Windows: `certutil -hashfile looks\my-id.avpreset SHA256`
-   - macOS/Linux: `shasum -a 256 looks/my-id.avpreset`
+   - Windows: `certutil -hashfile looks\my-id.bfpreset SHA256`
+   - macOS/Linux: `shasum -a 256 looks/my-id.bfpreset`
 6. **Set the commit pin**: the `contentUrl` and `preview.url` must contain the 40-hex SHA of the commit that adds your files. Push your content commit first, copy its SHA, then update the URLs (or amend). CI verifies that URLs pinned to the PR head match the files on disk byte-for-byte.
 7. **Open the PR** using the template. Your PR description must include an explicit license grant sentence — see below. CI must be green.
 
@@ -64,7 +64,7 @@ This example is documentation only — it is **not** in the live index and is no
     "url": "https://github.com/example-author"
   },
   "license": "CC-BY-4.0",
-  "contentUrl": "https://raw.githubusercontent.com/beatform-app/gallery/0000000000000000000000000000000000000000/themes/midnight-phonk.avtheme",
+  "contentUrl": "https://raw.githubusercontent.com/beatform-app/gallery/0000000000000000000000000000000000000000/themes/midnight-phonk.bftheme",
   "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
   "sizeBytes": 48213,
   "minAppVersion": "2.68.0",
@@ -78,7 +78,7 @@ This example is documentation only — it is **not** in the live index and is no
 
 Field notes:
 
-- `schemaVersion` is the version of the **content** format, not of this registry. For a theme it is the embedded project document's schema version (`projectSchemaVersion` inside the `.avtheme`, currently 13); for a look it is the `.avpreset` `schemaVersion` (currently 1). The app uses it to skip content it cannot parse yet.
+- `schemaVersion` is the version of the **content** format, not of this registry. For a theme it is the embedded project document's schema version (`projectSchemaVersion` inside the `.bftheme`, currently 13); for a look it is the `.bfpreset` `schemaVersion` (currently 1). The app uses it to skip content it cannot parse yet.
 - `minAppVersion` is the oldest Beatform release that can load the entry. Use the version you actually tested with.
 - `sizeBytes` must be the exact byte size of the content file; the app enforces it as a download cap.
 - `preview` is optional in the schema for now, but submissions are expected to include one — entries without a preview are hard to browse and will usually be asked to add it in review.

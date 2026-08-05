@@ -35,13 +35,13 @@ const ID_RE = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 const SHA256_RE = /^[0-9a-f]{64}$/;
 const SEMVER_RE = /^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$/;
 const CONTENT_URL_RE =
-  /^https:\/\/raw\.githubusercontent\.com\/beatform-app\/gallery\/([0-9a-f]{40})\/((looks|themes)\/[a-z0-9]+(?:-[a-z0-9]+)*\.(avpreset|avtheme))$/;
+  /^https:\/\/raw\.githubusercontent\.com\/beatform-app\/gallery\/([0-9a-f]{40})\/((looks|themes)\/[a-z0-9]+(?:-[a-z0-9]+)*\.(bfpreset|bftheme))$/;
 const PREVIEW_URL_RE =
   /^https:\/\/raw\.githubusercontent\.com\/beatform-app\/gallery\/([0-9a-f]{40})\/(previews\/[a-z0-9]+(?:-[a-z0-9]+)*\.(png|jpg))$/;
 const LICENSES = ["CC0-1.0", "CC-BY-4.0"];
 const TYPES = ["look", "theme"];
 const TYPE_FOLDER = { look: "looks", theme: "themes" };
-const TYPE_EXT = { look: "avpreset", theme: "avtheme" };
+const TYPE_EXT = { look: "bfpreset", theme: "bftheme" };
 const MAX_CONTENT_BYTES = 32 * 1024 * 1024;
 const MAX_PREVIEW_BYTES = 512 * 1024;
 
@@ -178,7 +178,7 @@ for (const [i, entry] of entries.entries()) {
       if (folder !== TYPE_FOLDER[entry.type]) fail(`${where}: type "${entry.type}" content must live under ${TYPE_FOLDER[entry.type]}/, URL points at ${folder}/`);
       if (ext !== TYPE_EXT[entry.type]) fail(`${where}: type "${entry.type}" content must use .${TYPE_EXT[entry.type]}, URL points at .${ext}`);
     }
-    const fileBase = relPath.split("/").pop().replace(/\.(avpreset|avtheme)$/, "");
+    const fileBase = relPath.split("/").pop().replace(/\.(bfpreset|bftheme)$/, "");
     if (id !== null && fileBase !== id) {
       fail(`${where}: content filename "${fileBase}" must equal the entry id "${id}"`);
     }
