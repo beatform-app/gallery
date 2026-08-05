@@ -1,6 +1,8 @@
 # Beatform Gallery
 
-This is the community gallery for [Beatform](https://github.com/beatform-app), the free and open-source music visualizer. It holds reviewed, hash-verified looks and themes that are browsable directly inside the app. Everything here is free content under a free license — there are no paid tiers and never will be.
+This is the community gallery for [Beatform](https://github.com/beatform-app), the free and open-source music visualizer. It holds reviewed, hash-verified looks and themes that are browsable directly inside the app — press the **Gallery** button in the top bar (Beatform 2.72.0 or newer). Everything here is free content under a free license — there are no paid tiers and never will be.
+
+The gallery is **live**: the first curated collection (eleven seed looks and themes) shipped on 2026-08-05.
 
 The gallery is deliberately boring infrastructure: one JSON registry (`index.json`), content files committed to this repository, and a small validator that CI runs on every change. The app never trusts anything it downloads until it has verified it.
 
