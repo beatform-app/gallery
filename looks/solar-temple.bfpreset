@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "kind": "bfpreset",
+  "preset": {
+    "id": "up-msghxk92-dqfal2",
+    "name": "Solar Temple",
+    "presetId": "spectrum-scape",
+    "params": {
+      "hue": 285,
+      "heightScale": 12,
+      "camPitch": 34,
+      "camDist": 20,
+      "camSpin": -10,
+      "emissive": 0.7,
+      "fov": 58,
+      "hueRange": 110,
+      "barWidth": 0.55,
+      "spacing": 0.75,
+      "light": 0.8,
+      "camYaw": 30,
+      "targetY": 1.4
+    },
+    "createdAt": "2026-08-05T19:44:53.702Z"
+  }
+}

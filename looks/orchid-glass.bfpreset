@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "kind": "bfpreset",
+  "preset": {
+    "id": "up-msghsxqs-cz34je",
+    "name": "Orchid Glass",
+    "presetId": "metaballs",
+    "params": {
+      "hue": 45,
+      "count": 4,
+      "size": 0.16,
+      "speed": 0.22,
+      "glow": 0.45,
+      "threshold": 1.15,
+      "gloss": 0.95,
+      "orbitX": 0.24,
+      "orbitY": 0.2,
+      "radiusFloor": 0.8,
+      "energyGrow": 1,
+      "radiusBand": 0.6,
+      "beatSwell": 0.28,
+      "rimStart": 0.5,
+      "innerGrad": 0.5,
+      "hueField": 18,
+      "beatBright": 0.12,
+      "bgLevel": 0.008,
+      "vignette": 0.5,
+      "mirror": 1,
+      "lightAngle": 55,
+      "squash": 0.2
+    },
+    "createdAt": "2026-08-05T19:41:17.908Z"
+  }
+}

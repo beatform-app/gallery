@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "kind": "bfpreset",
+  "preset": {
+    "id": "up-msght3ji-iin5hv",
+    "name": "Abyssal Bloom",
+    "presetId": "nebula",
+    "params": {
+      "hue": 210,
+      "scale": 2.6,
+      "flow": 0.08,
+      "kaleido": 7,
+      "contrast": 0.95,
+      "sparkle": 0.7,
+      "beatRipple": 0.4,
+      "warp": 2.2,
+      "angle": 0,
+      "spin": 0.2,
+      "depth": 0.4,
+      "hueRange": 40,
+      "midHueShift": 0,
+      "brightFloor": 0.06,
+      "bassBright": 0.3,
+      "saturation": 0.7,
+      "sparkleScale": 26,
+      "sparkleSharp": 36,
+      "rippleWidth": 24,
+      "rippleWarp": 0.09,
+      "beatBloom": 0.1,
+      "driveGlow": 0.08,
+      "vignette": 0.6,
+      "hotCore": 1.2
+    },
+    "createdAt": "2026-08-05T19:41:25.422Z"
+  }
+}

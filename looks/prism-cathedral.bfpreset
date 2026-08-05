@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "kind": "bfpreset",
+  "preset": {
+    "id": "up-msghsqha-n4ajn8",
+    "name": "Prism Cathedral",
+    "presetId": "echo-trails",
+    "params": {
+      "hue": 285,
+      "decay": 0.95,
+      "zoom": 0.3,
+      "swirl": 0.18,
+      "radius": 0.3,
+      "react": 0.12,
+      "inject": 0.4,
+      "beatZoom": 0.2,
+      "flowSwirl": 0.15,
+      "thick": 0.018,
+      "hueSpin": 0.5,
+      "hueDrift": 0.3,
+      "kickFlash": 0.12,
+      "vignette": 0.45,
+      "mirror": 6,
+      "echoHue": 0.7,
+      "sides": 6,
+      "beatStar": 0.7
+    },
+    "createdAt": "2026-08-05T19:41:08.494Z"
+  }
+}

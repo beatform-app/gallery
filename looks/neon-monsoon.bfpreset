@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "kind": "bfpreset",
+  "preset": {
+    "id": "up-msghtjnm-20rqpu",
+    "name": "Neon Monsoon",
+    "presetId": "tunnel-rings",
+    "params": {
+      "hue": 210,
+      "hueSpread": 130,
+      "colorFade": 0.35,
+      "speed": 1,
+      "rings": 11,
+      "spokes": 18,
+      "beatPulse": 0.9,
+      "curve": 0.5,
+      "cruiseFloor": 0.5,
+      "curveScale": 1.1,
+      "cruiseEnergy": 1.3,
+      "beatSpeed": 0.08,
+      "tileLevel": 0.12,
+      "tileSpectrum": 0.55,
+      "pulseWidth": 12,
+      "tileSat": 0.9,
+      "checker": 0.08,
+      "groutWidth": 0.05,
+      "groutLevel": 0.26,
+      "fogNear": 0.01,
+      "fogFar": 0.92,
+      "centerGlow": 0.6,
+      "vignette": 0.3,
+      "mirror": 1,
+      "twist": 1.6,
+      "roundness": 0.7,
+      "surfaceWarp": 1.2,
+      "beatBright": 0.3
+    },
+    "createdAt": "2026-08-05T19:41:46.306Z"
+  }
+}
