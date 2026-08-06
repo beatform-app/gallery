@@ -9,6 +9,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
+        with:
+          # Pinned-commit byte verification needs the pins in history.
+          fetch-depth: 0
       - uses: actions/setup-node@v5
         with:
           node-version: 24

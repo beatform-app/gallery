@@ -39,7 +39,7 @@ Submissions are pull requests, and every PR is reviewed by the repository owner 
 5. **Append an entry** to `index.json` (see the worked example below). Compute the SHA-256 and byte size of your files:
    - Windows: `certutil -hashfile looks\my-id.bfpreset SHA256`
    - macOS/Linux: `shasum -a 256 looks/my-id.bfpreset`
-6. **Set the commit pin**: the `contentUrl` and `preview.url` must contain the 40-hex SHA of the commit that adds your files. Push your content commit first, copy its SHA, then update the URLs (or amend). CI verifies that URLs pinned to the PR head match the files on disk byte-for-byte.
+6. **Set the commit pin**: the `contentUrl` and `preview.url` must contain the 40-hex SHA of the commit that adds your files. Push your content commit first, copy its SHA, then add the index entry in a NEW commit. **Never amend or force-push after copying the SHA** — that orphans the pin and the URLs will 404. CI byte-verifies every pinned URL against git history (sha256 + size), whatever commit it points at.
 7. **Open the PR** using the template. Your PR description must include an explicit license grant sentence — see below. CI must be green.
 
 ### Licensing

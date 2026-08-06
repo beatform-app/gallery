@@ -64,6 +64,40 @@ function checkKeys(where, obj, allowed, required) {
   }
 }
 
+/**
+ * Byte-verify a commit-pinned file via git history. Every non-tombstoned
+ * entry gets this — the promise "CI verifies the exact bytes the pinned URL
+ * serves" must hold for REAL submissions, whose pins are never HEAD (the
+ * index commit comes after the content commit). Requires full history
+ * (fetch-depth: 0 in CI); an unreachable pin is a hard failure, not a skip.
+ */
+function verifyPinnedBlob(where, pin, relPath, expectedSha, expectedSize, maxBytes, label) {
+  let bytes;
+  try {
+    bytes = execFileSync("git", ["cat-file", "-p", `${pin}:${relPath}`], {
+      cwd: repoRoot,
+      maxBuffer: 64 * 1024 * 1024,
+    });
+  } catch {
+    fail(
+      `${where}: ${label} pin ${pin.slice(0, 12)} or path "${relPath}" is not reachable in git history — shallow clone, rewritten history, or a pin pointing outside this repo`,
+    );
+    return;
+  }
+  if (expectedSha) {
+    const actual = createHash("sha256").update(bytes).digest("hex");
+    if (actual !== expectedSha) {
+      fail(`${where}: ${label} sha256 mismatch at pin — index says ${expectedSha}, pinned "${relPath}" hashes to ${actual}`);
+    }
+  }
+  if (expectedSize !== undefined && bytes.length !== expectedSize) {
+    fail(`${where}: ${label} sizeBytes mismatch at pin — index says ${expectedSize}, pinned "${relPath}" is ${bytes.length} bytes`);
+  }
+  if (maxBytes && bytes.length > maxBytes) {
+    fail(`${where}: ${label} pinned "${relPath}" is larger than the ${maxBytes}-byte limit`);
+  }
+}
+
 function verifyLocalFile(where, relPath, expectedSha, expectedSize, maxBytes, label) {
   const abs = join(repoRoot, ...relPath.split("/"));
   if (!existsSync(abs)) {
@@ -182,8 +216,14 @@ for (const [i, entry] of entries.entries()) {
     if (id !== null && fileBase !== id) {
       fail(`${where}: content filename "${fileBase}" must equal the entry id "${id}"`);
     }
-    if (!tombstoned && pin === headSha) {
-      verifyLocalFile(where, relPath, entry.sha256, entry.sizeBytes, MAX_CONTENT_BYTES, "content");
+    if (!tombstoned) {
+      // Always verify the PINNED bytes (what the app will actually fetch);
+      // when the pin is this very commit, additionally check the working
+      // tree so uncommitted drift can't slip through a local run.
+      verifyPinnedBlob(where, pin, relPath, entry.sha256, entry.sizeBytes, MAX_CONTENT_BYTES, "content");
+      if (pin === headSha) {
+        verifyLocalFile(where, relPath, entry.sha256, entry.sizeBytes, MAX_CONTENT_BYTES, "content");
+      }
     }
   }
 
@@ -201,6 +241,7 @@ for (const [i, entry] of entries.entries()) {
         fail(`${where}: preview.url must be a commit-pinned raw URL into previews/ (png or jpg)`);
       } else {
         const [, pin, relPath] = pm;
+        verifyPinnedBlob(where, pin, relPath, p.sha256, undefined, MAX_PREVIEW_BYTES, "preview");
         if (pin === headSha) {
           verifyLocalFile(where, relPath, p.sha256, undefined, MAX_PREVIEW_BYTES, "preview");
         }
