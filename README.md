@@ -11,7 +11,7 @@ The gallery is deliberately boring infrastructure: one JSON registry (`index.jso
 | Folder | Contents |
 | --- | --- |
 | `looks/` | `.bfpreset` files — a named snapshot of one visual mode's parameters and sync settings ("looks"). |
-| `themes/` | `.bftheme` files — full shareable templates: metadata plus a complete project document (styles, background, overlays, timeline scenes, post chain). |
+| `themes/` | `.bftheme` files — a whole shareable setup: metadata plus a complete project document (styles, background, overlays, timeline scenes, post chain). |
 | `previews/` | One preview image per entry (PNG or JPEG, at most 512 KB). |
 | `schema/` | The JSON Schema describing `index.json`. |
 | `scripts/` | The dependency-free validator that CI runs. |
@@ -22,11 +22,11 @@ Both content formats are pure data. They contain no code of any kind, and the ap
 
 1. The app fetches `index.json` from this repository.
 2. Every entry's `contentUrl` is pinned to a specific git commit (`raw.githubusercontent.com/beatform-app/gallery/<40-hex-commit>/...`). Pinned URLs are immutable by construction: nobody — including us — can change what that URL serves without the URL itself changing. There is no silent-replacement path.
-3. Before downloading, the app checks the declared `sizeBytes` and enforces it as a hard limit, and checks `minAppVersion` and the content `schemaVersion` so it never downloads something it cannot parse.
-4. The download goes to memory, never straight to disk. The app computes the SHA-256 of the received bytes and compares it to the `sha256` in the registry. On any mismatch the bytes are discarded before parsing.
+3. Before downloading, the app checks `minAppVersion` and the content `schemaVersion`, so it never downloads something it cannot parse. It also rejects any registry entry whose declared `sizeBytes` is above the 32 MB ceiling (512 KB for previews) at the moment it reads the index — that check happens before any content request is made.
+4. The download goes to memory, never straight to disk, and redirects are refused outright. The received bytes must then match the declared `sizeBytes` **exactly**, and their SHA-256 must match the `sha256` in the registry. On either mismatch the bytes are discarded before parsing. To be precise about the ordering: the transfer itself is not truncated mid-flight — the size check is enforced on the bytes in hand, before anything downstream may touch them.
 5. Only after hash verification does the app parse and validate the file, show a preview along with the author, license, and attribution, and — only on an explicit "Install" click — persist it locally.
 
-Removal never deletes: an entry that has to go is marked with `"tombstone": true` (optionally pointing at a successor via `replacedBy`) so the app stops offering it, but IDs are never reused and history is never rewritten.
+Removal never deletes: an entry that has to go is marked with `"tombstone": true`, and the app drops it while reading the index — it is never listed, never downloaded, never installable. IDs are never reused and history is never rewritten. An entry may also carry `replacedBy` pointing at a successor id; that is a registry-side annotation for reviewers and CI, and the app does not read it or surface the successor anywhere today.
 
 ## Submitting content
 
@@ -80,9 +80,9 @@ This example is documentation only — it is **not** in the live index and is no
 
 Field notes:
 
-- `schemaVersion` is the version of the **content** format, not of this registry. For a theme it is the embedded project document's schema version (`projectSchemaVersion` inside the `.bftheme`, currently 13); for a look it is the `.bfpreset` `schemaVersion` (currently 1). The app uses it to skip content it cannot parse yet.
+- `schemaVersion` is the version of the **content** format, not of this registry. For a theme it is the embedded project document's schema version (`projectSchemaVersion` inside the `.bftheme`, 14 as of Beatform 2.85.0); for a look it is the `.bfpreset` `schemaVersion` (still 1). Read the number out of the file you exported rather than copying one from here — the app uses it to skip content it cannot parse yet, and a number higher than the reader supports gates the entry.
 - `minAppVersion` is the oldest Beatform release that can load the entry. Use the version you actually tested with.
-- `sizeBytes` must be the exact byte size of the content file; the app enforces it as a download cap.
+- `sizeBytes` must be the exact byte size of the content file. The app requires an exact match, not merely "no larger than" — a file that has changed by one byte since you hashed it is refused.
 - `preview` is optional in the schema for now, but submissions are expected to include one — entries without a preview are hard to browse and will usually be asked to add it in review.
 
 ## Moderation policy
@@ -98,7 +98,7 @@ Every pull request is reviewed and merged by the repository owner. Reviews are h
 
 ## Removal and tombstones
 
-If content must be pulled (license dispute, takedown request, quality or safety problem), the entry is not deleted. It gets `"tombstone": true`, keeps its ID forever, and optionally names a successor in `replacedBy`. The app hides tombstoned entries from browsing. Git history is never rewritten to remove content; if a legal obligation ever required expunging history, the affected pins would break and the tombstone would remain as the record.
+If content must be pulled (license dispute, takedown request, quality or safety problem), the entry is not deleted. It gets `"tombstone": true` and keeps its ID forever. The app drops tombstoned entries while reading the index, so they are never listed and never installable. `replacedBy` may name a successor id for reviewers and CI; the app does not read that field, so a successor is not surfaced to users anywhere today. Git history is never rewritten to remove content; if a legal obligation ever required expunging history, the affected pins would break and the tombstone would remain as the record.
 
 To report a problem with published content, open a GitHub issue on this repository. See also [SECURITY.md](SECURITY.md).
 
