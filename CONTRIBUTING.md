@@ -7,6 +7,6 @@ All submissions go through pull requests, and the full step-by-step guide lives 
 Two things worth repeating because they block merges most often:
 
 1. Your PR description must contain the explicit license grant sentence, choosing `CC0-1.0` or `CC-BY-4.0`.
-2. CI must be green: `node scripts/validate.mjs` (Node 24, no dependencies) has to pass, which means your `index.json` entry, filenames, hashes, sizes, and commit-pinned URLs all agree with the files you added.
+2. CI must be green: `node scripts/validate.mjs` (Node 24, no dependencies) has to pass. That means your `index.json` entry, filenames, hashes, sizes, and commit-pinned URLs all agree with the files you added — and that every parameter value inside the content sits on its slider's step grid, which it will if you submit what Beatform exported rather than hand-edited numbers. See [schema/README.md](schema/README.md).
 
 Changes to the schema, validator, or documentation are welcome too — open an issue first for anything that would change what the app has to understand.

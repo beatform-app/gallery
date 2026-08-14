@@ -2,7 +2,7 @@
 
 This is the community gallery for [Beatform](https://github.com/beatform-app), the free and open-source music visualizer. It holds reviewed, hash-verified looks and themes that are browsable directly inside the app — press the **Gallery** button in the top bar (Beatform 2.72.0 or newer). Everything here is free content under a free license — there are no paid tiers and never will be.
 
-The gallery is **live**: the first curated collection (eleven seed looks and themes) shipped on 2026-08-05.
+The gallery is **live**: the first curated collection (eleven seed looks and themes) shipped on 2026-08-05, and now holds eighteen entries — thirteen looks and five themes.
 
 The gallery is deliberately boring infrastructure: one JSON registry (`index.json`), content files committed to this repository, and a small validator that CI runs on every change. The app never trusts anything it downloads until it has verified it.
 
@@ -13,7 +13,7 @@ The gallery is deliberately boring infrastructure: one JSON registry (`index.jso
 | `looks/` | `.bfpreset` files — a named snapshot of one visual mode's parameters and sync settings ("looks"). |
 | `themes/` | `.bftheme` files — a whole shareable setup: metadata plus a complete project document (styles, background, overlays, timeline scenes, post chain). |
 | `previews/` | One preview image per entry (PNG or JPEG, at most 512 KB). |
-| `schema/` | The JSON Schema describing `index.json`. |
+| `schema/` | The JSON Schema describing `index.json`, plus a generated snapshot of the app's parameter specs that CI checks content against. See [schema/README.md](schema/README.md). |
 | `scripts/` | The dependency-free validator that CI runs. |
 
 Both content formats are pure data. They contain no code of any kind, and the app parses them with strict validators before anything is shown. Shader content is planned for a later registry version and will arrive with its own, much stricter review bar.
@@ -33,7 +33,7 @@ Removal never deletes: an entry that has to go is marked with `"tombstone": true
 Submissions are pull requests, and every PR is reviewed by the repository owner before merge. The flow:
 
 1. **Fork** this repository.
-2. **Export** your look or theme from Beatform (`.bfpreset` for a look, `.bftheme` for a theme).
+2. **Export** your look or theme from Beatform (`.bfpreset` for a look, `.bftheme` for a theme). Export it rather than hand-editing the numbers afterwards: the app's own controls always leave values on their step grid, and CI refuses content that sits off it — see [Validation](#validation).
 3. **Pick an ID**: a lowercase slug like `midnight-phonk`, 3–64 characters, letters/digits/single hyphens. The content file must be named after it: `looks/<id>.bfpreset` or `themes/<id>.bftheme`.
 4. **Add a preview**: `previews/<id>.png` or `.jpg`, at most 512 KB, showing the look actually running.
 5. **Append an entry** to `index.json` (see the worked example below). Compute the SHA-256 and byte size of your files:
@@ -104,4 +104,10 @@ To report a problem with published content, open a GitHub issue on this reposito
 
 ## Validation
 
-CI runs `node scripts/validate.mjs` on every push and pull request (Node 24, no external dependencies, no network). You can run the same command locally from the repository root. It checks the registry against the schema rules, verifies ID uniqueness and ID-to-filename identity, requires commit-pinned URLs into this repository, and — for URLs pinned to the current commit — verifies that the referenced files exist and match their declared SHA-256 and byte size.
+CI runs `node scripts/validate.mjs` on every push and pull request (Node 24, no external dependencies, no network). You can run the same command locally from the repository root.
+
+It checks two different things:
+
+**The index.** Registry entries against the schema rules, ID uniqueness and ID-to-filename identity, commit-pinned URLs into this repository, and byte-for-byte verification of every pinned content and preview blob against its declared SHA-256 and size — resolved out of git history, so it verifies what the pinned URL actually serves rather than only what happens to be checked out.
+
+**The content those pins resolve to.** Every parameter value in every `.bfpreset` and `.bftheme` must sit on the step grid of the slider that edits it, checked against a committed snapshot of the app's own parameter specs. A value off its grid renders as authored until a user touches that slider, which snaps it — quietly turning the entry into one nobody reviewed. [schema/README.md](schema/README.md) explains the rule, its exact scope, and how to regenerate the snapshot when the app's parameters change.
