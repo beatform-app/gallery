@@ -4,6 +4,13 @@
 // The JSON Schema in schema/index.schema.json documents the same rules for
 // humans and tooling; if you change one, change both.
 //
+// It checks two different kinds of thing:
+//   1. The INDEX — shape, ids, licenses, commit-pinned URLs, and byte-exact
+//      verification of every pinned content and preview blob.
+//   2. The CONTENT those pins resolve to — every parameter value must sit on
+//      its slider's step grid, read against the spec snapshot in
+//      schema/param-specs.json. See "THE STEP-GRID RULE" below.
+//
 // Exit code 0 = valid, 1 = one or more problems (all are listed).
 
 import { createHash } from "node:crypto";
@@ -45,6 +52,23 @@ const TYPE_EXT = { look: "bfpreset", theme: "bftheme" };
 const MAX_CONTENT_BYTES = 32 * 1024 * 1024;
 const MAX_PREVIEW_BYTES = 512 * 1024;
 
+/**
+ * Snapshot of every built-in preset's parameter spec (min/max/step), taken
+ * from the app's own src/render/presets/* by scripts/gen-param-specs.mjs.
+ * Read here so CI can prove the STEP-GRID RULE below without cloning the app
+ * or touching the network. A missing or unreadable snapshot is a hard
+ * failure, not a skipped check — a rule that silently stops running is worse
+ * than no rule.
+ */
+let PARAM_SPECS = null;
+try {
+  const raw = JSON.parse(readFileSync(join(repoRoot, "schema", "param-specs.json"), "utf8"));
+  if (typeof raw?.presets !== "object" || raw.presets === null) throw new Error("no presets map");
+  PARAM_SPECS = raw.presets;
+} catch (e) {
+  fail(`schema/param-specs.json is missing or unreadable (${e.message}) — regenerate it with scripts/gen-param-specs.mjs`);
+}
+
 function checkString(where, obj, key, maxLen) {
   const v = obj[key];
   if (typeof v !== "string" || v.length === 0) {
@@ -82,7 +106,7 @@ function verifyPinnedBlob(where, pin, relPath, expectedSha, expectedSize, maxByt
     fail(
       `${where}: ${label} pin ${pin.slice(0, 12)} or path "${relPath}" is not reachable in git history — shallow clone, rewritten history, or a pin pointing outside this repo`,
     );
-    return;
+    return null;
   }
   if (expectedSha) {
     const actual = createHash("sha256").update(bytes).digest("hex");
@@ -96,6 +120,7 @@ function verifyPinnedBlob(where, pin, relPath, expectedSha, expectedSize, maxByt
   if (maxBytes && bytes.length > maxBytes) {
     fail(`${where}: ${label} pinned "${relPath}" is larger than the ${maxBytes}-byte limit`);
   }
+  return bytes;
 }
 
 function verifyLocalFile(where, relPath, expectedSha, expectedSize, maxBytes, label) {
@@ -116,6 +141,135 @@ function verifyLocalFile(where, relPath, expectedSha, expectedSize, maxBytes, la
   }
   if (maxBytes && statSync(abs).size > maxBytes) {
     fail(`${where}: ${label} "${relPath}" is larger than the ${maxBytes}-byte limit`);
+  }
+}
+
+/* ------------------------------------------------------------------ *
+ * THE STEP-GRID RULE
+ *
+ * Every parameter value in an entry's content must land on the step grid
+ * of the slider that edits it.
+ *
+ * Why this is worth a CI rule rather than a review habit: a value off its
+ * grid renders exactly as authored right up until the user brushes that
+ * slider, at which point the range input rewrites the value onto the grid
+ * and the entry silently becomes a different one. Nothing in the app
+ * prevents it — the content validators keep every finite number verbatim,
+ * with no range, step or spec lookup anywhere in the path — so the file is
+ * accepted, installs cleanly, and only misbehaves under the user's hand.
+ * Beatform enforces the same rule on its own in-code styles
+ * (src/render/presetStyles.test.ts); this is that rule applied to the
+ * content this registry ships. The math below is deliberately the same.
+ *
+ * DELIBERATE SCOPE. Only parameters of the visual presets are checked —
+ * the specs in the app's src/render/presets/*. The post chain, the motion
+ * masters and modulation route amounts have their own separate tables and
+ * are NOT covered here; the snapshot carries min/max as well as step, so
+ * a range rule is a small addition if one is ever wanted, but it is not
+ * this rule.
+ * ------------------------------------------------------------------ */
+
+/** Where parameter values live inside a `.bfpreset` / `.bftheme`. Returns
+ * `{ label, presetIds, key, value }` rows; `presetIds` has more than one
+ * entry only for automation lanes, which target a bare param key against
+ * whatever preset is active at that time (Beatform's own comment in
+ * src/state/project.ts calls that cross-mode ambiguity out) — so a lane is
+ * held to the grid of every preset the document actually uses that
+ * declares the key. */
+function paramValuesIn(type, json) {
+  const rows = [];
+  const add = (label, presetIds, params) => {
+    for (const [key, value] of Object.entries(params ?? {})) {
+      rows.push({ label, presetIds, key, value });
+    }
+  };
+  if (type === "look") {
+    const preset = json?.preset;
+    if (typeof preset !== "object" || preset === null) return null;
+    add("preset.params", [preset.presetId], preset.params);
+    return rows;
+  }
+  const doc = json?.document;
+  if (typeof doc !== "object" || doc === null) return null;
+  for (const [presetId, params] of Object.entries(doc.paramsByPreset ?? {})) {
+    add(`paramsByPreset.${presetId}`, [presetId], params);
+  }
+  const scenes = Array.isArray(doc.timeline?.scenes) ? doc.timeline.scenes : [];
+  for (const scene of scenes) {
+    add(`timeline scene "${scene?.id ?? "?"}"`, [scene?.presetId ?? doc.presetId], scene?.params);
+  }
+  const activePresets = [
+    ...new Set([doc.presetId, ...scenes.map((s) => s?.presetId)].filter((p) => typeof p === "string")),
+  ];
+  for (const lane of Array.isArray(doc.timeline?.lanes) ? doc.timeline.lanes : []) {
+    for (const kf of Array.isArray(lane?.keyframes) ? lane.keyframes : []) {
+      rows.push({
+        label: `automation lane "${lane?.param}" at t=${kf?.t}`,
+        presetIds: activePresets,
+        key: lane?.param,
+        value: kf?.value,
+      });
+    }
+  }
+  return rows;
+}
+
+function checkParamGrid(where, type, relPath, bytes) {
+  if (!PARAM_SPECS) return;
+  let json;
+  try {
+    json = JSON.parse(bytes.toString("utf8"));
+  } catch (e) {
+    fail(`${where}: content "${relPath}" is not valid JSON (${e.message})`);
+    return;
+  }
+  const rows = paramValuesIn(type, json);
+  if (rows === null) {
+    fail(
+      `${where}: content "${relPath}" has no ${type === "look" ? '"preset"' : '"document"'} object — it is not a readable .${TYPE_EXT[type]}`,
+    );
+    return;
+  }
+  // Unknown visuals are reported ONCE per file rather than once per value —
+  // a preset the snapshot has never heard of would otherwise print the same
+  // line for every parameter in it and bury everything else.
+  const unknown = new Set();
+  for (const row of rows) {
+    for (const p of row.presetIds) {
+      if (typeof p !== "string" || !PARAM_SPECS[p]) unknown.add(String(p));
+    }
+  }
+  for (const p of unknown) {
+    fail(
+      `${where}: content "${relPath}" uses visual "${p}", which schema/param-specs.json does not know — regenerate the snapshot (scripts/gen-param-specs.mjs) if the app has gained it`,
+    );
+  }
+
+  for (const { label, presetIds, key, value } of rows) {
+    const known = presetIds.filter((p) => typeof p === "string" && PARAM_SPECS[p]);
+    if (known.length === 0) continue;
+    const defining = known.filter((p) => PARAM_SPECS[p][key]);
+    if (defining.length === 0) {
+      fail(
+        `${where}: ${label} sets "${key}", which is not a parameter of ${known.join(" or ")} — the value would be carried in the file and do nothing`,
+      );
+      continue;
+    }
+    if (!Number.isFinite(value)) {
+      fail(`${where}: ${label} sets "${key}" to ${JSON.stringify(value)}, which is not a finite number`);
+      continue;
+    }
+    for (const presetId of defining) {
+      const spec = PARAM_SPECS[presetId][key];
+      if (!(spec.step > 0)) continue;
+      // The same rounding a native range input applies to its own value.
+      const steps = (value - spec.min) / spec.step;
+      if (Math.abs(steps - Math.round(steps)) < 1e-6) continue;
+      const nearest = Number((spec.min + Math.round(steps) * spec.step).toFixed(10));
+      fail(
+        `${where}: ${label} sets ${presetId}.${key} to ${value}, off its ${spec.step} step grid — the slider snaps to ${nearest}, so the entry changes the first time a user touches that control`,
+      );
+    }
   }
 }
 
@@ -220,9 +374,14 @@ for (const [i, entry] of entries.entries()) {
       // Always verify the PINNED bytes (what the app will actually fetch);
       // when the pin is this very commit, additionally check the working
       // tree so uncommitted drift can't slip through a local run.
-      verifyPinnedBlob(where, pin, relPath, entry.sha256, entry.sizeBytes, MAX_CONTENT_BYTES, "content");
+      const contentBytes = verifyPinnedBlob(where, pin, relPath, entry.sha256, entry.sizeBytes, MAX_CONTENT_BYTES, "content");
       if (pin === headSha) {
         verifyLocalFile(where, relPath, entry.sha256, entry.sizeBytes, MAX_CONTENT_BYTES, "content");
+      }
+      // Grid-check the PINNED bytes — the ones the app will actually fetch,
+      // already proven above to hash to what the index declares.
+      if (contentBytes && TYPES.includes(entry.type)) {
+        checkParamGrid(where, entry.type, relPath, contentBytes);
       }
     }
   }

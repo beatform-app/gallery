@@ -5,100 +5,140 @@
       "id": "abyssal-bloom",
       "type": "look",
       "name": "Abyssal Bloom",
-      "description": "Bioluminescence from the deep \u2014 an emerald kaleidoscope flower that ripples open on every kick and glitters like plankton.",
+      "description": "Bioluminescence from the deep — an emerald kaleidoscope flower that ripples open on every kick and glitters like plankton.",
       "author": {
         "name": "Beatform",
         "url": "https://github.com/beatform-app"
       },
       "license": "CC0-1.0",
-      "contentUrl": "https://raw.githubusercontent.com/beatform-app/gallery/a795bac0794a0811d45f0352d47e0e3cf80e17be/looks/abyssal-bloom.bfpreset",
-      "sha256": "7421014c2db00304df7de560d548299bdbc2eceb4842892d40bb7c24e9803b2b",
-      "sizeBytes": 763,
-      "minAppVersion": "2.70.0",
+      "contentUrl": "https://raw.githubusercontent.com/beatform-app/gallery/a3f53d342cd97f21283108d449091711a1778d11/looks/abyssal-bloom.bfpreset",
+      "sha256": "dbcc85da0cc091f6aeede01fb5f90a1d08c7c97f8a2025ca1a37defcc7af5c19",
+      "sizeBytes": 970,
+      "minAppVersion": "2.95.0",
       "schemaVersion": 1,
       "preview": {
-        "url": "https://raw.githubusercontent.com/beatform-app/gallery/a795bac0794a0811d45f0352d47e0e3cf80e17be/previews/abyssal-bloom.jpg",
-        "sha256": "6080176174115b7bafb909a9509a91d5b3cd8519153ee659b646a3073266c395"
+        "url": "https://raw.githubusercontent.com/beatform-app/gallery/a3f53d342cd97f21283108d449091711a1778d11/previews/abyssal-bloom.jpg",
+        "sha256": "5f63e7319bb1556d8ca20a74ebc3a29e6ba325ebeab1cd48e20e6b41a11a0363"
+      }
+    },
+    {
+      "id": "ember-veil",
+      "type": "look",
+      "name": "Ember Veil",
+      "description": "Aurora in ember and gold over a moonlit ridge — five curtains, a low moon and a reflection, in the warm half of the palette the mode could not reach before.",
+      "author": {
+        "name": "Beatform",
+        "url": "https://github.com/beatform-app"
+      },
+      "license": "CC0-1.0",
+      "contentUrl": "https://raw.githubusercontent.com/beatform-app/gallery/a3f53d342cd97f21283108d449091711a1778d11/looks/ember-veil.bfpreset",
+      "sha256": "3b8f5cf51a7b74c86ca34927670521788b0d37af791054989046353166bc854e",
+      "sizeBytes": 1001,
+      "minAppVersion": "2.95.0",
+      "schemaVersion": 1,
+      "preview": {
+        "url": "https://raw.githubusercontent.com/beatform-app/gallery/a3f53d342cd97f21283108d449091711a1778d11/previews/ember-veil.jpg",
+        "sha256": "d506cf4fe2d942dc6a59c795172fc8189772f6b7b1fe76eb7d3b5382041af329"
       }
     },
     {
       "id": "glass-mandala",
       "type": "look",
       "name": "Glass Mandala",
-      "description": "A wine-dark glass mandala \u2014 six flame petals that breathe with the low end, made for slow, heavy sets.",
+      "description": "A wine-dark glass mandala — six flame petals that breathe with the low end, made for slow, heavy sets.",
       "author": {
         "name": "Beatform",
         "url": "https://github.com/beatform-app"
       },
       "license": "CC0-1.0",
-      "contentUrl": "https://raw.githubusercontent.com/beatform-app/gallery/a795bac0794a0811d45f0352d47e0e3cf80e17be/looks/glass-mandala.bfpreset",
-      "sha256": "16d34f58e78027ef81fe8d8a78cb78f236b739496539effba991c4c97f87ff14",
-      "sizeBytes": 990,
-      "minAppVersion": "2.70.0",
+      "contentUrl": "https://raw.githubusercontent.com/beatform-app/gallery/a3f53d342cd97f21283108d449091711a1778d11/looks/glass-mandala.bfpreset",
+      "sha256": "07e2302e2cad5f4c878e5006ff9e27d01cc83d2119b80c20c26c27fc50136b40",
+      "sizeBytes": 792,
+      "minAppVersion": "2.95.0",
       "schemaVersion": 1,
       "preview": {
-        "url": "https://raw.githubusercontent.com/beatform-app/gallery/a795bac0794a0811d45f0352d47e0e3cf80e17be/previews/glass-mandala.jpg",
-        "sha256": "b8994565b01327fe44778c4c97632f43641f51e5aff101619b220b62c358031d"
+        "url": "https://raw.githubusercontent.com/beatform-app/gallery/a3f53d342cd97f21283108d449091711a1778d11/previews/glass-mandala.jpg",
+        "sha256": "75e3d4dfced2292fc0afdbccfad77b2d3f7f91bd09d9def0f15122158362557a"
       }
     },
     {
       "id": "neon-monsoon",
       "type": "look",
       "name": "Neon Monsoon",
-      "description": "A rain-slick tunnel bending through neon \u2014 spectrum-lit tiles, drifting color, and a curve that leans into the drums.",
+      "description": "A rain-slick tunnel bending through neon — spectrum-lit tiles, drifting color, and a curve that leans into the drums.",
       "author": {
         "name": "Beatform",
         "url": "https://github.com/beatform-app"
       },
       "license": "CC0-1.0",
-      "contentUrl": "https://raw.githubusercontent.com/beatform-app/gallery/a795bac0794a0811d45f0352d47e0e3cf80e17be/looks/neon-monsoon.bfpreset",
-      "sha256": "1462fedd9dce9edd7feaf3ce99fb3da213f83ce861375ee6f97a231673717fd7",
-      "sizeBytes": 875,
-      "minAppVersion": "2.70.0",
+      "contentUrl": "https://raw.githubusercontent.com/beatform-app/gallery/a3f53d342cd97f21283108d449091711a1778d11/looks/neon-monsoon.bfpreset",
+      "sha256": "f22b6a4ca68c2f0a4f297427266f97c3e96117ffceaa60f22c5c7a1a73f5ef76",
+      "sizeBytes": 993,
+      "minAppVersion": "2.95.0",
       "schemaVersion": 1,
       "preview": {
-        "url": "https://raw.githubusercontent.com/beatform-app/gallery/a795bac0794a0811d45f0352d47e0e3cf80e17be/previews/neon-monsoon.jpg",
-        "sha256": "fc9e248091c977dd50502b87018df0861c429bf22be9dffbdc4fdc3eca496fb5"
+        "url": "https://raw.githubusercontent.com/beatform-app/gallery/a3f53d342cd97f21283108d449091711a1778d11/previews/neon-monsoon.jpg",
+        "sha256": "0e45c2baf8f7eb08bb0a22c3f2f43b5e54e2e19dbb2ff24d7783c7b507904b14"
       }
     },
     {
       "id": "obsidian-pulse",
       "type": "look",
       "name": "Obsidian Pulse",
-      "description": "A dark-club bass ring in cold teal \u2014 twin mirrored arcs, floating sparks, and a pump you can feel in the artwork.",
+      "description": "A dark-club bass ring in cold teal — twin mirrored arcs, floating sparks, and a pump you can feel in the artwork.",
       "author": {
         "name": "Beatform",
         "url": "https://github.com/beatform-app"
       },
       "license": "CC0-1.0",
-      "contentUrl": "https://raw.githubusercontent.com/beatform-app/gallery/a795bac0794a0811d45f0352d47e0e3cf80e17be/looks/obsidian-pulse.bfpreset",
-      "sha256": "6cb66448c4aa0fed64f4791b606f968fa4478c46b9462d1be04bbab4182234df",
-      "sizeBytes": 835,
-      "minAppVersion": "2.70.0",
+      "contentUrl": "https://raw.githubusercontent.com/beatform-app/gallery/a3f53d342cd97f21283108d449091711a1778d11/looks/obsidian-pulse.bfpreset",
+      "sha256": "fcf43f58fd9ef898796fcb8b8bdd5a9d78172c8a7126ac6f49f2b902ba7f7047",
+      "sizeBytes": 896,
+      "minAppVersion": "2.95.0",
       "schemaVersion": 1,
       "preview": {
-        "url": "https://raw.githubusercontent.com/beatform-app/gallery/a795bac0794a0811d45f0352d47e0e3cf80e17be/previews/obsidian-pulse.jpg",
-        "sha256": "dbce7a5876674ffa6bff69d81af02048f07d13f7d94847aa668482a4f1b20ef8"
+        "url": "https://raw.githubusercontent.com/beatform-app/gallery/a3f53d342cd97f21283108d449091711a1778d11/previews/obsidian-pulse.jpg",
+        "sha256": "1479203ce216754d1971368c7b72fcc60659ac7944370df6957530fefe87eca6"
       }
     },
     {
       "id": "orchid-glass",
       "type": "look",
       "name": "Orchid Glass",
-      "description": "Violet glass in a slow boil \u2014 glossy orbs merge and split with the bassline, lit like studio chrome.",
+      "description": "Violet glass in a slow boil — glossy orbs merge and split with the bassline, lit like studio chrome.",
       "author": {
         "name": "Beatform",
         "url": "https://github.com/beatform-app"
       },
       "license": "CC0-1.0",
-      "contentUrl": "https://raw.githubusercontent.com/beatform-app/gallery/a795bac0794a0811d45f0352d47e0e3cf80e17be/looks/orchid-glass.bfpreset",
-      "sha256": "0bd2fd94f9a828163fef50e600cb2bdc2289c697265a867ff180697c6d747406",
-      "sizeBytes": 710,
-      "minAppVersion": "2.70.0",
+      "contentUrl": "https://raw.githubusercontent.com/beatform-app/gallery/a3f53d342cd97f21283108d449091711a1778d11/looks/orchid-glass.bfpreset",
+      "sha256": "8ec318f3765a31370bb0e38cd818d55ab0768c4a8f2d143a7abbcb418208a8e8",
+      "sizeBytes": 903,
+      "minAppVersion": "2.95.0",
       "schemaVersion": 1,
       "preview": {
-        "url": "https://raw.githubusercontent.com/beatform-app/gallery/a795bac0794a0811d45f0352d47e0e3cf80e17be/previews/orchid-glass.jpg",
-        "sha256": "248bb812fb069aae774e9e8648f2c6da4e78f4995781823609073d3a242ad834"
+        "url": "https://raw.githubusercontent.com/beatform-app/gallery/a3f53d342cd97f21283108d449091711a1778d11/previews/orchid-glass.jpg",
+        "sha256": "03f5b8120425699fcb096c52fde9d13e970a0bcfaf89d0975683eaa557afe68f"
+      }
+    },
+    {
+      "id": "phase-bloom",
+      "type": "look",
+      "name": "Phase Bloom",
+      "description": "A true phase scope: left against right on a crosshair, drawing Lissajous figures out of the stereo image. Rotated 45 degrees, so a mono signal stands upright.",
+      "author": {
+        "name": "Beatform",
+        "url": "https://github.com/beatform-app"
+      },
+      "license": "CC0-1.0",
+      "contentUrl": "https://raw.githubusercontent.com/beatform-app/gallery/a3f53d342cd97f21283108d449091711a1778d11/looks/phase-bloom.bfpreset",
+      "sha256": "cc208b2943da69a57af67f3cc00b77bf6eafb011d7688ac386830d78f81f2a6e",
+      "sizeBytes": 884,
+      "minAppVersion": "2.95.0",
+      "schemaVersion": 1,
+      "preview": {
+        "url": "https://raw.githubusercontent.com/beatform-app/gallery/a3f53d342cd97f21283108d449091711a1778d11/previews/phase-bloom.jpg",
+        "sha256": "e857cb3aa5b9c83a17944ac119727130b7568fc186270404974b4577872b7dcc"
       }
     },
     {
@@ -111,114 +151,214 @@
         "url": "https://github.com/beatform-app"
       },
       "license": "CC0-1.0",
-      "contentUrl": "https://raw.githubusercontent.com/beatform-app/gallery/a795bac0794a0811d45f0352d47e0e3cf80e17be/looks/prism-cathedral.bfpreset",
-      "sha256": "1939c4ebdd1010b2c2bc9306607c83bb22c0d7bd46331bca5c2c8f54aa03bdb0",
-      "sizeBytes": 613,
-      "minAppVersion": "2.70.0",
+      "contentUrl": "https://raw.githubusercontent.com/beatform-app/gallery/a3f53d342cd97f21283108d449091711a1778d11/looks/prism-cathedral.bfpreset",
+      "sha256": "9486e6bbd133ae2e3e370a3bb72640f5e761cafa16434d73e0e0375e347bfc39",
+      "sizeBytes": 790,
+      "minAppVersion": "2.95.0",
       "schemaVersion": 1,
       "preview": {
-        "url": "https://raw.githubusercontent.com/beatform-app/gallery/a795bac0794a0811d45f0352d47e0e3cf80e17be/previews/prism-cathedral.jpg",
-        "sha256": "19709d532f53a7dd86ea3d0a03398eb88092200703c0de7476e68020c3643030"
+        "url": "https://raw.githubusercontent.com/beatform-app/gallery/a3f53d342cd97f21283108d449091711a1778d11/previews/prism-cathedral.jpg",
+        "sha256": "5b022adf1393e7963cd7c84714ad89597e2a3919791cf7c1704ace51c34bcee6"
       }
     },
     {
       "id": "solar-cascade",
       "type": "look",
       "name": "Solar Cascade",
-      "description": "120k embers in a golden spiral \u2014 the galaxy tightens as the track drives and erupts outward on every kick.",
+      "description": "120k embers in a golden spiral — the galaxy tightens as the track drives and erupts outward on every kick.",
       "author": {
         "name": "Beatform",
         "url": "https://github.com/beatform-app"
       },
       "license": "CC0-1.0",
-      "contentUrl": "https://raw.githubusercontent.com/beatform-app/gallery/a795bac0794a0811d45f0352d47e0e3cf80e17be/looks/solar-cascade.bfpreset",
-      "sha256": "92ef909bb4dd80b8267dae09eba9939b752fc370480fb540d0b3b2ce70aab02b",
-      "sizeBytes": 594,
-      "minAppVersion": "2.70.0",
+      "contentUrl": "https://raw.githubusercontent.com/beatform-app/gallery/a3f53d342cd97f21283108d449091711a1778d11/looks/solar-cascade.bfpreset",
+      "sha256": "db952c78af5fa70be96552081b82df1fcf93781a203b24b145df9ab95332cf5f",
+      "sizeBytes": 919,
+      "minAppVersion": "2.95.0",
       "schemaVersion": 1,
       "preview": {
-        "url": "https://raw.githubusercontent.com/beatform-app/gallery/a795bac0794a0811d45f0352d47e0e3cf80e17be/previews/solar-cascade.jpg",
-        "sha256": "bfd590d9eb94a033f4dcfc00aafaf80a6901fa88cbe2569b159161b063803388"
+        "url": "https://raw.githubusercontent.com/beatform-app/gallery/a3f53d342cd97f21283108d449091711a1778d11/previews/solar-cascade.jpg",
+        "sha256": "4b5a605da8a499953a446663764fc41a0853f8d7b0b9e3f7726317faa4912dc7"
       }
     },
     {
       "id": "solar-temple",
       "type": "look",
       "name": "Solar Temple",
-      "description": "A temple of sound rising from an ember moat \u2014 every block a frequency band, climbing gold into the dark.",
+      "description": "A temple of sound rising from an ember moat — every block a frequency band, climbing gold into the dark.",
       "author": {
         "name": "Beatform",
         "url": "https://github.com/beatform-app"
       },
       "license": "CC0-1.0",
-      "contentUrl": "https://raw.githubusercontent.com/beatform-app/gallery/a795bac0794a0811d45f0352d47e0e3cf80e17be/looks/solar-temple.bfpreset",
-      "sha256": "6bb26b646e219c96366699c11d88504012b1215aa0f484ed056f6eff57ac709f",
-      "sizeBytes": 505,
-      "minAppVersion": "2.70.0",
+      "contentUrl": "https://raw.githubusercontent.com/beatform-app/gallery/a3f53d342cd97f21283108d449091711a1778d11/looks/solar-temple.bfpreset",
+      "sha256": "2f05d72755ac0dc27bfc60eb508bca0bcfcbb6e38dc998e023ea48ab27c1d5c4",
+      "sizeBytes": 915,
+      "minAppVersion": "2.95.0",
       "schemaVersion": 1,
       "preview": {
-        "url": "https://raw.githubusercontent.com/beatform-app/gallery/a795bac0794a0811d45f0352d47e0e3cf80e17be/previews/solar-temple.jpg",
-        "sha256": "7daa6377fade4aeae84ad3dde84dafe44e8ea8f3c4a00eb367f910738d2ee8d2"
+        "url": "https://raw.githubusercontent.com/beatform-app/gallery/a3f53d342cd97f21283108d449091711a1778d11/previews/solar-temple.jpg",
+        "sha256": "5bd934cf540af7c91a7a0217496439af4bdb7eacfb74fd9a5a3d8f05e6dcd22d"
+      }
+    },
+    {
+      "id": "sonar-wall",
+      "type": "look",
+      "name": "Sonar Wall",
+      "description": "The LED wall running as a scrolling spectrogram: every row is a moment of the track falling away from you, coloured by frequency and lit from behind by the bass.",
+      "author": {
+        "name": "Beatform",
+        "url": "https://github.com/beatform-app"
+      },
+      "license": "CC0-1.0",
+      "contentUrl": "https://raw.githubusercontent.com/beatform-app/gallery/a3f53d342cd97f21283108d449091711a1778d11/looks/sonar-wall.bfpreset",
+      "sha256": "80207e1da1134eb7bb3db7e9f3a0d9747efc26e963ebbf706c8de0f5b78e2c51",
+      "sizeBytes": 1010,
+      "minAppVersion": "2.95.0",
+      "schemaVersion": 1,
+      "preview": {
+        "url": "https://raw.githubusercontent.com/beatform-app/gallery/a3f53d342cd97f21283108d449091711a1778d11/previews/sonar-wall.jpg",
+        "sha256": "d03a8aa375a8e8320f30b5d93f4d48f08da95681330407f3dbd01296367a838a"
       }
     },
     {
       "id": "vhs-sunrise",
       "type": "look",
       "name": "VHS Sunrise",
-      "description": "Golden-hour synthwave off a worn tape \u2014 big striped sun, teal grid, soft scanlines, mountains in haze.",
+      "description": "Golden-hour synthwave off a worn tape — big striped sun, teal grid, soft scanlines, mountains in haze.",
       "author": {
         "name": "Beatform",
         "url": "https://github.com/beatform-app"
       },
       "license": "CC0-1.0",
-      "contentUrl": "https://raw.githubusercontent.com/beatform-app/gallery/a795bac0794a0811d45f0352d47e0e3cf80e17be/looks/vhs-sunrise.bfpreset",
-      "sha256": "1a3bd8bf392c300be31252238b66df380a7a9b5fde91e4d88a3301f24f635457",
-      "sizeBytes": 621,
-      "minAppVersion": "2.70.0",
+      "contentUrl": "https://raw.githubusercontent.com/beatform-app/gallery/a3f53d342cd97f21283108d449091711a1778d11/looks/vhs-sunrise.bfpreset",
+      "sha256": "3ebe172649d218453912d9ddd587f5ef7c24e86f1ff25fef9e7e03e57f428b69",
+      "sizeBytes": 924,
+      "minAppVersion": "2.95.0",
       "schemaVersion": 1,
       "preview": {
-        "url": "https://raw.githubusercontent.com/beatform-app/gallery/a795bac0794a0811d45f0352d47e0e3cf80e17be/previews/vhs-sunrise.jpg",
-        "sha256": "560f8d2a9078b55ea283e889ea3845c924e0ff834eb3a22bc210c8220ff72b6d"
+        "url": "https://raw.githubusercontent.com/beatform-app/gallery/a3f53d342cd97f21283108d449091711a1778d11/previews/vhs-sunrise.jpg",
+        "sha256": "06bea48776166aa3df113e6440cfad234da460ba31a6a91e869b079626877dd3"
+      }
+    },
+    {
+      "id": "wide-glass",
+      "type": "look",
+      "name": "Wide Glass",
+      "description": "Left channel one way, right channel the other, over a glass floor — a bar wall that shows you how wide your mix actually is.",
+      "author": {
+        "name": "Beatform",
+        "url": "https://github.com/beatform-app"
+      },
+      "license": "CC0-1.0",
+      "contentUrl": "https://raw.githubusercontent.com/beatform-app/gallery/a3f53d342cd97f21283108d449091711a1778d11/looks/wide-glass.bfpreset",
+      "sha256": "536b99f9e729a340f1aed7b2e75b8464c896e87963e5c370e8d6c6bafaaa8e64",
+      "sizeBytes": 952,
+      "minAppVersion": "2.95.0",
+      "schemaVersion": 1,
+      "preview": {
+        "url": "https://raw.githubusercontent.com/beatform-app/gallery/a3f53d342cd97f21283108d449091711a1778d11/previews/wide-glass.jpg",
+        "sha256": "566494b9e555b400185df6f2adc641bb6c83252a05bfbd0e9a38db7a8a54413b"
+      }
+    },
+    {
+      "id": "blacklight",
+      "type": "theme",
+      "name": "Blacklight",
+      "description": "A lit lattice running away from you in the dark — violet wireframe, four-fold symmetry, junctions burning at every intersection. The grid pulses on a two-beat square wave, and a section change steps the whole shaft to six-fold and back.",
+      "author": {
+        "name": "Beatform",
+        "url": "https://github.com/beatform-app"
+      },
+      "license": "CC0-1.0",
+      "contentUrl": "https://raw.githubusercontent.com/beatform-app/gallery/a3f53d342cd97f21283108d449091711a1778d11/themes/blacklight.bftheme",
+      "sha256": "02f21f62c7b4a54a9f1c5a88437f7321194d51672c44a07b08a8530824b71a37",
+      "sizeBytes": 5548,
+      "minAppVersion": "2.95.0",
+      "schemaVersion": 14,
+      "preview": {
+        "url": "https://raw.githubusercontent.com/beatform-app/gallery/a3f53d342cd97f21283108d449091711a1778d11/previews/blacklight.jpg",
+        "sha256": "2075cb26b74e173a071de41cd13114b41512f05b9dcac50b7275b9f9a9779eb8"
+      }
+    },
+    {
+      "id": "cold-open",
+      "type": "theme",
+      "name": "Cold Open",
+      "description": "A single amber trace on a broadcast reticle, with your title and artist set as a hard editorial lockup. Twelve seconds of standby, then a glitch cut into the full instrument.",
+      "author": {
+        "name": "Beatform",
+        "url": "https://github.com/beatform-app"
+      },
+      "license": "CC0-1.0",
+      "contentUrl": "https://raw.githubusercontent.com/beatform-app/gallery/a3f53d342cd97f21283108d449091711a1778d11/themes/cold-open.bftheme",
+      "sha256": "44b140b83f4e7581ac75dc5512afcd559906bc7a8f0b5f7d5f47a4f728ae657b",
+      "sizeBytes": 6902,
+      "minAppVersion": "2.95.0",
+      "schemaVersion": 14,
+      "preview": {
+        "url": "https://raw.githubusercontent.com/beatform-app/gallery/a3f53d342cd97f21283108d449091711a1778d11/previews/cold-open.jpg",
+        "sha256": "2db1d5ab929dd60840c166a613dec1c393e5b061334dfeeb886d827c9f31e704"
       }
     },
     {
       "id": "deep-current",
       "type": "theme",
       "name": "Deep Current",
-      "description": "A complete deep-sea setup: the Abyssal Bloom kaleidoscope with smoothed spectrum curves \u2014 drop it on any track and it reads finished.",
+      "description": "Bioluminescent folds a long way under the surface. Nothing strikes: the bass swells and takes a second and a half to let go, the tide glows in over two bars, and every section change turns the water a different colour.",
       "author": {
         "name": "Beatform",
         "url": "https://github.com/beatform-app"
       },
       "license": "CC0-1.0",
-      "contentUrl": "https://raw.githubusercontent.com/beatform-app/gallery/a795bac0794a0811d45f0352d47e0e3cf80e17be/themes/deep-current.bftheme",
-      "sha256": "165c97bb60fcbb72e58b8f980c63dd55dd8b52d49e9ef4073741bb9fba1f8ec1",
-      "sizeBytes": 8494,
-      "minAppVersion": "2.70.0",
-      "schemaVersion": 13,
+      "contentUrl": "https://raw.githubusercontent.com/beatform-app/gallery/a3f53d342cd97f21283108d449091711a1778d11/themes/deep-current.bftheme",
+      "sha256": "7565f654a8f2f9c583ec8c2131c39fe9c2f14e8cb3d29f10e927d5fef4b4b9e2",
+      "sizeBytes": 5284,
+      "minAppVersion": "2.95.0",
+      "schemaVersion": 14,
       "preview": {
-        "url": "https://raw.githubusercontent.com/beatform-app/gallery/a795bac0794a0811d45f0352d47e0e3cf80e17be/previews/deep-current.jpg",
-        "sha256": "d873a0b9d4906a90f3d3fe4d6179648cdf2c0a65649b59192d3cbef409000c56"
+        "url": "https://raw.githubusercontent.com/beatform-app/gallery/a3f53d342cd97f21283108d449091711a1778d11/previews/deep-current.jpg",
+        "sha256": "b2cbecef5f66c1aa27d7a0407ebc72be30fc5ce2c7325adf4f65dbf7c38bc885"
+      }
+    },
+    {
+      "id": "meteor-hour",
+      "type": "theme",
+      "name": "Meteor Hour",
+      "description": "Flying through a wide-open sky at festival scale — the field thins out through a breakdown and refills as the track builds, and every section change throws a shower that burns out over the next few bars.",
+      "author": {
+        "name": "Beatform",
+        "url": "https://github.com/beatform-app"
+      },
+      "license": "CC0-1.0",
+      "contentUrl": "https://raw.githubusercontent.com/beatform-app/gallery/a3f53d342cd97f21283108d449091711a1778d11/themes/meteor-hour.bftheme",
+      "sha256": "0840d7fa390db13c7909fd23e3a203c8941eebae8e0dd65ea96a7ea6d003f33c",
+      "sizeBytes": 5365,
+      "minAppVersion": "2.95.0",
+      "schemaVersion": 14,
+      "preview": {
+        "url": "https://raw.githubusercontent.com/beatform-app/gallery/a3f53d342cd97f21283108d449091711a1778d11/previews/meteor-hour.jpg",
+        "sha256": "52b78f93616f2036e17db6dfcc57774ec6478b3ee86877e4846f9a839f6ecf2d"
       }
     },
     {
       "id": "sunset-circuit",
       "type": "theme",
       "name": "Sunset Circuit",
-      "description": "A complete retrowave setup around VHS Sunrise \u2014 golden sun, teal grid and tape-era softness, ready for a whole set.",
+      "description": "The drive home, not the set: a low sun sinking over the first twenty-four seconds, a grid running out to a hazy horizon, and real film grain instead of tape hiss. Nothing in it flashes.",
       "author": {
         "name": "Beatform",
         "url": "https://github.com/beatform-app"
       },
       "license": "CC0-1.0",
-      "contentUrl": "https://raw.githubusercontent.com/beatform-app/gallery/a795bac0794a0811d45f0352d47e0e3cf80e17be/themes/sunset-circuit.bftheme",
-      "sha256": "091422a9241afdf997d16e474a1d815a894edf74d8a9cf49ef317cf08fb55584",
-      "sizeBytes": 8481,
-      "minAppVersion": "2.70.0",
-      "schemaVersion": 13,
+      "contentUrl": "https://raw.githubusercontent.com/beatform-app/gallery/a3f53d342cd97f21283108d449091711a1778d11/themes/sunset-circuit.bftheme",
+      "sha256": "fa682f6375c023d55a9049df5bb2ad84c36927cb0c8137b7bbdcc0ac9b6b3d9f",
+      "sizeBytes": 5825,
+      "minAppVersion": "2.95.0",
+      "schemaVersion": 14,
       "preview": {
-        "url": "https://raw.githubusercontent.com/beatform-app/gallery/a795bac0794a0811d45f0352d47e0e3cf80e17be/previews/sunset-circuit.jpg",
-        "sha256": "b61740b47f284ab35bdc50bcd13c1c60d27f6e1684bc697500489984df5aec49"
+        "url": "https://raw.githubusercontent.com/beatform-app/gallery/a3f53d342cd97f21283108d449091711a1778d11/previews/sunset-circuit.jpg",
+        "sha256": "9de428588118bde305b0240235d92c90da84f9ddb6f9034bf2503b7932a60de4"
       }
     }
   ]

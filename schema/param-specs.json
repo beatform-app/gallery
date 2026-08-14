@@ -1,0 +1,2329 @@
+{
+  "note": "GENERATED FILE - do not hand-edit. One entry per built-in Beatform preset, one entry per parameter, carrying the spec's min/max/step exactly as src/render/presets/* declares it. scripts/validate.mjs reads this to prove every parameter value in every entry's content lands on the step grid its slider snaps to. Regenerate with `node scripts/gen-param-specs.mjs <path-to-beatform-app-checkout>` and commit the result - see schema/README.md.",
+  "appVersion": "2.96.0",
+  "appCommit": "520e384cf5608b90d8446041decd95380792fe43",
+  "presets": {
+    "aurora": {
+      "hue": {
+        "min": 0,
+        "max": 360,
+        "step": 1
+      },
+      "bright": {
+        "min": 0.2,
+        "max": 2,
+        "step": 0.05
+      },
+      "react": {
+        "min": 0,
+        "max": 2,
+        "step": 0.05
+      },
+      "flow": {
+        "min": 0,
+        "max": 3,
+        "step": 0.05
+      },
+      "thick": {
+        "min": 0.04,
+        "max": 0.3,
+        "step": 0.01
+      },
+      "baseY": {
+        "min": 0.2,
+        "max": 0.8,
+        "step": 0.01
+      },
+      "wave": {
+        "min": 0,
+        "max": 2,
+        "step": 0.05
+      },
+      "layers": {
+        "min": 1,
+        "max": 5,
+        "step": 1
+      },
+      "beatPulse": {
+        "min": 0,
+        "max": 1.5,
+        "step": 0.05
+      },
+      "palWarm": {
+        "min": -1,
+        "max": 1,
+        "step": 0.02
+      },
+      "moon": {
+        "min": 0,
+        "max": 0.2,
+        "step": 0.005
+      },
+      "ground": {
+        "min": 0,
+        "max": 0.4,
+        "step": 0.01
+      },
+      "specAmt": {
+        "min": 0,
+        "max": 3,
+        "step": 0.05
+      },
+      "bassSwell": {
+        "min": 0,
+        "max": 1.5,
+        "step": 0.05
+      },
+      "drift": {
+        "min": 0,
+        "max": 1.5,
+        "step": 0.05
+      },
+      "reflect": {
+        "min": 0,
+        "max": 1,
+        "step": 0.02
+      },
+      "horizon": {
+        "min": 0.55,
+        "max": 0.98,
+        "step": 0.01
+      },
+      "reflectFade": {
+        "min": 1,
+        "max": 12,
+        "step": 0.5
+      },
+      "hueStep": {
+        "min": 0,
+        "max": 120,
+        "step": 5
+      },
+      "hueSpread": {
+        "min": 0,
+        "max": 220,
+        "step": 5
+      },
+      "palSpan": {
+        "min": 0,
+        "max": 1.5,
+        "step": 0.05
+      },
+      "rays": {
+        "min": 0,
+        "max": 1,
+        "step": 0.02
+      },
+      "sat": {
+        "min": 0,
+        "max": 1,
+        "step": 0.02
+      },
+      "stars": {
+        "min": 0,
+        "max": 1,
+        "step": 1
+      },
+      "bgGlow": {
+        "min": 0,
+        "max": 1,
+        "step": 0.02
+      },
+      "mirror": {
+        "min": 1,
+        "max": 2,
+        "step": 1
+      },
+      "groundRough": {
+        "min": 0,
+        "max": 1,
+        "step": 0.02
+      },
+      "moonX": {
+        "min": -0.8,
+        "max": 0.8,
+        "step": 0.02
+      },
+      "moonY": {
+        "min": 0.3,
+        "max": 0.95,
+        "step": 0.01
+      },
+      "moonGlow": {
+        "min": 0,
+        "max": 1,
+        "step": 0.02
+      }
+    },
+    "bass-circle": {
+      "hue": {
+        "min": 0,
+        "max": 360,
+        "step": 1
+      },
+      "saturation": {
+        "min": 0,
+        "max": 2,
+        "step": 0.01
+      },
+      "lightness": {
+        "min": 0,
+        "max": 2,
+        "step": 0.01
+      },
+      "radius": {
+        "min": 0.08,
+        "max": 0.42,
+        "step": 0.005
+      },
+      "pump": {
+        "min": 0,
+        "max": 0.6,
+        "step": 0.01
+      },
+      "barLen": {
+        "min": 0.05,
+        "max": 0.32,
+        "step": 0.01
+      },
+      "segments": {
+        "min": 0,
+        "max": 32,
+        "step": 1
+      },
+      "particles": {
+        "min": 0,
+        "max": 1.5,
+        "step": 0.05
+      },
+      "spin": {
+        "min": -1,
+        "max": 1,
+        "step": 0.02
+      },
+      "rimBright": {
+        "min": 0,
+        "max": 1.5,
+        "step": 0.05
+      },
+      "cover": {
+        "min": 0,
+        "max": 1,
+        "step": 1
+      },
+      "coreFill": {
+        "min": 0,
+        "max": 2,
+        "step": 1
+      },
+      "coverHue": {
+        "min": 0,
+        "max": 1,
+        "step": 1
+      },
+      "symmetry": {
+        "min": 1,
+        "max": 8,
+        "step": 1
+      },
+      "angle": {
+        "min": 0,
+        "max": 360,
+        "step": 1
+      },
+      "hueSpread": {
+        "min": 0,
+        "max": 240,
+        "step": 5
+      },
+      "beatPump": {
+        "min": 0,
+        "max": 0.5,
+        "step": 0.01
+      },
+      "gap": {
+        "min": 0,
+        "max": 0.12,
+        "step": 0.005
+      },
+      "segGap": {
+        "min": 0.05,
+        "max": 0.5,
+        "step": 0.01
+      },
+      "barGlow": {
+        "min": 0,
+        "max": 1,
+        "step": 0.02
+      },
+      "partDensity": {
+        "min": 3,
+        "max": 16,
+        "step": 0.5
+      },
+      "partFill": {
+        "min": 0.1,
+        "max": 0.9,
+        "step": 0.05
+      },
+      "partFloat": {
+        "min": 0,
+        "max": 2,
+        "step": 0.05
+      },
+      "beatBurst": {
+        "min": 0,
+        "max": 2,
+        "step": 0.05
+      },
+      "partBeat": {
+        "min": 0,
+        "max": 1,
+        "step": 0.05
+      },
+      "coverMix": {
+        "min": 0,
+        "max": 1,
+        "step": 0.02
+      },
+      "coverBright": {
+        "min": 0.1,
+        "max": 2,
+        "step": 0.05
+      },
+      "coverFit": {
+        "min": 0,
+        "max": 2,
+        "step": 1
+      },
+      "coverZoom": {
+        "min": 0.25,
+        "max": 3,
+        "step": 0.01
+      },
+      "coverX": {
+        "min": -0.5,
+        "max": 0.5,
+        "step": 0.005
+      },
+      "coverY": {
+        "min": -0.5,
+        "max": 0.5,
+        "step": 0.005
+      },
+      "vignette": {
+        "min": 0,
+        "max": 1.2,
+        "step": 0.05
+      }
+    },
+    "builder2": {
+      "l0.opacity": {
+        "min": 0,
+        "max": 1,
+        "step": 0.01
+      },
+      "l0.hue": {
+        "min": 0,
+        "max": 360,
+        "step": 1
+      },
+      "l0.hueSpread": {
+        "min": 0,
+        "max": 360,
+        "step": 1
+      },
+      "l0.glow": {
+        "min": 0,
+        "max": 1,
+        "step": 0.01
+      },
+      "l0.flash": {
+        "min": 0,
+        "max": 1,
+        "step": 0.01
+      },
+      "l1.opacity": {
+        "min": 0,
+        "max": 1,
+        "step": 0.01
+      },
+      "l1.hue": {
+        "min": 0,
+        "max": 360,
+        "step": 1
+      },
+      "l1.hueSpread": {
+        "min": 0,
+        "max": 360,
+        "step": 1
+      },
+      "l1.density": {
+        "min": 4,
+        "max": 24,
+        "step": 1
+      },
+      "l1.speed": {
+        "min": 0,
+        "max": 2,
+        "step": 0.01
+      },
+      "l1.streak": {
+        "min": 0,
+        "max": 1,
+        "step": 0.01
+      },
+      "l2.opacity": {
+        "min": 0,
+        "max": 1,
+        "step": 0.01
+      },
+      "l2.hue": {
+        "min": 0,
+        "max": 360,
+        "step": 1
+      },
+      "l2.hueSpread": {
+        "min": 0,
+        "max": 360,
+        "step": 1
+      },
+      "l2.height": {
+        "min": 0.1,
+        "max": 0.9,
+        "step": 0.01
+      },
+      "l2.gap": {
+        "min": 0,
+        "max": 0.6,
+        "step": 0.01
+      },
+      "l2.glow": {
+        "min": 0,
+        "max": 1,
+        "step": 0.01
+      },
+      "l2.peaks": {
+        "min": 0,
+        "max": 1,
+        "step": 1
+      },
+      "l3.opacity": {
+        "min": 0,
+        "max": 1,
+        "step": 0.01
+      },
+      "l3.hue": {
+        "min": 0,
+        "max": 360,
+        "step": 1
+      },
+      "l3.hueSpread": {
+        "min": 0,
+        "max": 360,
+        "step": 1
+      },
+      "l3.start": {
+        "min": 0,
+        "max": 0.3,
+        "step": 0.01
+      },
+      "l3.end": {
+        "min": 0.2,
+        "max": 0.7,
+        "step": 0.01
+      },
+      "l3.sharp": {
+        "min": 0,
+        "max": 1,
+        "step": 0.01
+      },
+      "l3.bright": {
+        "min": 0,
+        "max": 1.5,
+        "step": 0.01
+      }
+    },
+    "echo-trails": {
+      "hue": {
+        "min": 0,
+        "max": 360,
+        "step": 1
+      },
+      "decay": {
+        "min": 0.6,
+        "max": 0.99,
+        "step": 0.01
+      },
+      "zoom": {
+        "min": 0,
+        "max": 1,
+        "step": 0.01
+      },
+      "swirl": {
+        "min": -1,
+        "max": 1,
+        "step": 0.01
+      },
+      "radius": {
+        "min": 0.05,
+        "max": 0.6,
+        "step": 0.01
+      },
+      "source": {
+        "min": 0,
+        "max": 4,
+        "step": 1
+      },
+      "react": {
+        "min": 0,
+        "max": 0.5,
+        "step": 0.01
+      },
+      "inject": {
+        "min": 0,
+        "max": 2,
+        "step": 0.05
+      },
+      "beatZoom": {
+        "min": 0,
+        "max": 1,
+        "step": 0.02
+      },
+      "flowSwirl": {
+        "min": 0,
+        "max": 1,
+        "step": 0.02
+      },
+      "thick": {
+        "min": 0.005,
+        "max": 0.1,
+        "step": 0.005
+      },
+      "hueSpin": {
+        "min": 0,
+        "max": 1,
+        "step": 0.02
+      },
+      "hueDrift": {
+        "min": 0,
+        "max": 1,
+        "step": 0.02
+      },
+      "kickFlash": {
+        "min": 0,
+        "max": 1,
+        "step": 0.02
+      },
+      "vignette": {
+        "min": 0,
+        "max": 1,
+        "step": 0.05
+      },
+      "mirror": {
+        "min": 1,
+        "max": 12,
+        "step": 1
+      },
+      "echoHue": {
+        "min": 0,
+        "max": 1,
+        "step": 0.02
+      },
+      "sides": {
+        "min": 0,
+        "max": 8,
+        "step": 1
+      },
+      "beatStar": {
+        "min": 0,
+        "max": 1,
+        "step": 0.02
+      },
+      "warp": {
+        "min": 0,
+        "max": 2,
+        "step": 1
+      },
+      "centerX": {
+        "min": -0.5,
+        "max": 0.5,
+        "step": 0.01
+      },
+      "centerY": {
+        "min": -0.5,
+        "max": 0.5,
+        "step": 0.01
+      }
+    },
+    "led-matrix": {
+      "display": {
+        "min": 0,
+        "max": 2,
+        "step": 1
+      },
+      "cols": {
+        "min": 16,
+        "max": 96,
+        "step": 1
+      },
+      "rows": {
+        "min": 8,
+        "max": 48,
+        "step": 1
+      },
+      "gap": {
+        "min": 0.05,
+        "max": 0.5,
+        "step": 0.01
+      },
+      "rounded": {
+        "min": 0,
+        "max": 1,
+        "step": 1
+      },
+      "hueShift": {
+        "min": 0,
+        "max": 360,
+        "step": 1
+      },
+      "saturation": {
+        "min": 0,
+        "max": 2,
+        "step": 0.01
+      },
+      "lightness": {
+        "min": 0,
+        "max": 2,
+        "step": 0.01
+      },
+      "ghost": {
+        "min": 0,
+        "max": 0.6,
+        "step": 0.01
+      },
+      "scrollSpeed": {
+        "min": 2,
+        "max": 40,
+        "step": 0.5
+      },
+      "beatBoost": {
+        "min": 0,
+        "max": 0.3,
+        "step": 0.01
+      },
+      "dim": {
+        "min": 0,
+        "max": 1,
+        "step": 0.01
+      },
+      "hueLow": {
+        "min": 0,
+        "max": 360,
+        "step": 1
+      },
+      "hueHigh": {
+        "min": 0,
+        "max": 360,
+        "step": 1
+      },
+      "spectrumColor": {
+        "min": 0,
+        "max": 1,
+        "step": 0.02
+      },
+      "gradStart": {
+        "min": 0,
+        "max": 1,
+        "step": 0.02
+      },
+      "gradEnd": {
+        "min": 0.3,
+        "max": 1,
+        "step": 0.02
+      },
+      "litLevel": {
+        "min": 0.2,
+        "max": 0.8,
+        "step": 0.02
+      },
+      "hotBoost": {
+        "min": 0,
+        "max": 0.4,
+        "step": 0.02
+      },
+      "bassGlow": {
+        "min": 0,
+        "max": 0.5,
+        "step": 0.01
+      },
+      "beatFlash": {
+        "min": 0,
+        "max": 1,
+        "step": 0.01
+      },
+      "peaks": {
+        "min": 0,
+        "max": 1,
+        "step": 1
+      },
+      "peakBright": {
+        "min": 0.3,
+        "max": 1.2,
+        "step": 0.05
+      },
+      "bloom": {
+        "min": 0,
+        "max": 1.5,
+        "step": 0.05
+      },
+      "histFade": {
+        "min": 0,
+        "max": 1,
+        "step": 0.05
+      },
+      "scanline": {
+        "min": 0,
+        "max": 1,
+        "step": 0.02
+      },
+      "flicker": {
+        "min": 0,
+        "max": 0.6,
+        "step": 0.02
+      },
+      "panelVariance": {
+        "min": 0,
+        "max": 1,
+        "step": 0.02
+      },
+      "vignette": {
+        "min": 0,
+        "max": 1,
+        "step": 0.05
+      }
+    },
+    "metaballs": {
+      "hue": {
+        "min": 0,
+        "max": 360,
+        "step": 1
+      },
+      "count": {
+        "min": 2,
+        "max": 7,
+        "step": 1
+      },
+      "size": {
+        "min": 0.05,
+        "max": 0.3,
+        "step": 0.005
+      },
+      "speed": {
+        "min": 0.05,
+        "max": 1,
+        "step": 0.05
+      },
+      "glow": {
+        "min": 0,
+        "max": 1,
+        "step": 0.01
+      },
+      "threshold": {
+        "min": 0.6,
+        "max": 1.6,
+        "step": 0.02
+      },
+      "gloss": {
+        "min": 0,
+        "max": 1,
+        "step": 0.02
+      },
+      "beatSwell": {
+        "min": 0,
+        "max": 0.6,
+        "step": 0.02
+      },
+      "smear": {
+        "min": 0,
+        "max": 1,
+        "step": 0.01
+      },
+      "orbitX": {
+        "min": 0.1,
+        "max": 0.5,
+        "step": 0.01
+      },
+      "orbitY": {
+        "min": 0.1,
+        "max": 0.5,
+        "step": 0.01
+      },
+      "radiusFloor": {
+        "min": 0.1,
+        "max": 1.5,
+        "step": 0.05
+      },
+      "energyGrow": {
+        "min": 0,
+        "max": 2,
+        "step": 0.05
+      },
+      "radiusBand": {
+        "min": 0,
+        "max": 2.5,
+        "step": 0.05
+      },
+      "rimStart": {
+        "min": 0.2,
+        "max": 1,
+        "step": 0.02
+      },
+      "innerGrad": {
+        "min": 0,
+        "max": 1,
+        "step": 0.02
+      },
+      "hueField": {
+        "min": 0,
+        "max": 60,
+        "step": 1
+      },
+      "beatBright": {
+        "min": 0,
+        "max": 0.3,
+        "step": 0.01
+      },
+      "bgLevel": {
+        "min": 0,
+        "max": 0.15,
+        "step": 0.005
+      },
+      "vignette": {
+        "min": 0,
+        "max": 1,
+        "step": 0.05
+      },
+      "mirror": {
+        "min": 1,
+        "max": 12,
+        "step": 1
+      },
+      "lightAngle": {
+        "min": 0,
+        "max": 360,
+        "step": 5
+      },
+      "squash": {
+        "min": 0,
+        "max": 0.6,
+        "step": 0.02
+      },
+      "bassWeight": {
+        "min": 0,
+        "max": 1,
+        "step": 0.01
+      },
+      "eccentric": {
+        "min": 0,
+        "max": 1,
+        "step": 0.01
+      },
+      "environment": {
+        "min": 0,
+        "max": 2,
+        "step": 1
+      }
+    },
+    "nebula": {
+      "hue": {
+        "min": 0,
+        "max": 360,
+        "step": 1
+      },
+      "scale": {
+        "min": 0.8,
+        "max": 6,
+        "step": 0.1
+      },
+      "flow": {
+        "min": 0,
+        "max": 0.6,
+        "step": 0.01
+      },
+      "kaleido": {
+        "min": 0,
+        "max": 12,
+        "step": 1
+      },
+      "contrast": {
+        "min": 0,
+        "max": 1,
+        "step": 0.01
+      },
+      "sparkle": {
+        "min": 0,
+        "max": 1,
+        "step": 0.01
+      },
+      "beatRipple": {
+        "min": 0,
+        "max": 1,
+        "step": 0.01
+      },
+      "duo": {
+        "min": 0,
+        "max": 1,
+        "step": 0.01
+      },
+      "hue2": {
+        "min": 0,
+        "max": 360,
+        "step": 1
+      },
+      "windStrength": {
+        "min": 0,
+        "max": 1,
+        "step": 0.01
+      },
+      "stars": {
+        "min": 0,
+        "max": 1,
+        "step": 0.01
+      },
+      "warp": {
+        "min": 0,
+        "max": 4,
+        "step": 0.1
+      },
+      "angle": {
+        "min": 0,
+        "max": 360,
+        "step": 1
+      },
+      "spin": {
+        "min": 0,
+        "max": 3,
+        "step": 0.05
+      },
+      "depth": {
+        "min": 0,
+        "max": 1,
+        "step": 0.02
+      },
+      "hueRange": {
+        "min": 0,
+        "max": 300,
+        "step": 5
+      },
+      "midHueShift": {
+        "min": 0,
+        "max": 200,
+        "step": 5
+      },
+      "brightFloor": {
+        "min": 0,
+        "max": 0.6,
+        "step": 0.01
+      },
+      "bassBright": {
+        "min": 0,
+        "max": 1,
+        "step": 0.02
+      },
+      "saturation": {
+        "min": 0,
+        "max": 2,
+        "step": 0.02
+      },
+      "sparkleScale": {
+        "min": 2,
+        "max": 30,
+        "step": 1
+      },
+      "sparkleSharp": {
+        "min": 4,
+        "max": 40,
+        "step": 1
+      },
+      "rippleWidth": {
+        "min": 4,
+        "max": 40,
+        "step": 1
+      },
+      "rippleWarp": {
+        "min": 0,
+        "max": 0.3,
+        "step": 0.01
+      },
+      "beatBloom": {
+        "min": 0,
+        "max": 0.6,
+        "step": 0.02
+      },
+      "driveGlow": {
+        "min": 0,
+        "max": 0.5,
+        "step": 0.02
+      },
+      "vignette": {
+        "min": 0,
+        "max": 1,
+        "step": 0.05
+      },
+      "hotCore": {
+        "min": 0,
+        "max": 1.5,
+        "step": 0.05
+      },
+      "windAngle": {
+        "min": 0,
+        "max": 360,
+        "step": 1
+      }
+    },
+    "oscilloscope": {
+      "hue": {
+        "min": 0,
+        "max": 360,
+        "step": 1
+      },
+      "gain": {
+        "min": 0.2,
+        "max": 2,
+        "step": 0.05
+      },
+      "calm": {
+        "min": 0,
+        "max": 1,
+        "step": 0.01
+      },
+      "glow": {
+        "min": 0,
+        "max": 1,
+        "step": 0.01
+      },
+      "traceBright": {
+        "min": 0.3,
+        "max": 2.5,
+        "step": 0.05
+      },
+      "fill": {
+        "min": 0,
+        "max": 1,
+        "step": 1
+      },
+      "mirror": {
+        "min": 0,
+        "max": 1,
+        "step": 1
+      },
+      "traces": {
+        "min": 1,
+        "max": 3,
+        "step": 1
+      },
+      "renderMode": {
+        "min": 0,
+        "max": 2,
+        "step": 1
+      },
+      "persist": {
+        "min": 0,
+        "max": 0.6,
+        "step": 0.02
+      },
+      "display": {
+        "min": 0,
+        "max": 1,
+        "step": 1
+      },
+      "traceClamp": {
+        "min": 0.2,
+        "max": 0.5,
+        "step": 0.01
+      },
+      "coreWidth": {
+        "min": 0.001,
+        "max": 0.01,
+        "step": 0.0005
+      },
+      "traceSpread": {
+        "min": 0,
+        "max": 0.32,
+        "step": 0.01
+      },
+      "agFloor": {
+        "min": 0.1,
+        "max": 1,
+        "step": 0.05
+      },
+      "agRange": {
+        "min": 0,
+        "max": 3,
+        "step": 0.1
+      },
+      "hueWave": {
+        "min": 0,
+        "max": 80,
+        "step": 1
+      },
+      "bandHue": {
+        "min": 0,
+        "max": 120,
+        "step": 1
+      },
+      "ghostDim": {
+        "min": 0,
+        "max": 1,
+        "step": 0.05
+      },
+      "fillDim": {
+        "min": 0,
+        "max": 0.5,
+        "step": 0.01
+      },
+      "bandDim": {
+        "min": 0.25,
+        "max": 1,
+        "step": 0.05
+      },
+      "graticule": {
+        "min": 0,
+        "max": 3,
+        "step": 1
+      },
+      "gridLevel": {
+        "min": 0,
+        "max": 0.3,
+        "step": 0.01
+      },
+      "gridBeat": {
+        "min": 0,
+        "max": 1.5,
+        "step": 0.05
+      },
+      "scanline": {
+        "min": 0,
+        "max": 0.3,
+        "step": 0.01
+      },
+      "beatLift": {
+        "min": 0,
+        "max": 0.5,
+        "step": 0.01
+      },
+      "bgLevel": {
+        "min": 0,
+        "max": 0.12,
+        "step": 0.004
+      },
+      "vignette": {
+        "min": 0,
+        "max": 1.2,
+        "step": 0.05
+      },
+      "kaleido": {
+        "min": 1,
+        "max": 2,
+        "step": 1
+      },
+      "xyRotate": {
+        "min": 0,
+        "max": 360,
+        "step": 1
+      }
+    },
+    "particle-flow": {
+      "hue": {
+        "min": 0,
+        "max": 360,
+        "step": 1
+      },
+      "saturation": {
+        "min": 0,
+        "max": 2,
+        "step": 0.01
+      },
+      "lightness": {
+        "min": 0,
+        "max": 2,
+        "step": 0.01
+      },
+      "field": {
+        "min": 0,
+        "max": 3,
+        "step": 1
+      },
+      "flowStrength": {
+        "min": 0,
+        "max": 2,
+        "step": 0.05
+      },
+      "swirl": {
+        "min": 0,
+        "max": 2,
+        "step": 0.05
+      },
+      "beatBurst": {
+        "min": 0,
+        "max": 3,
+        "step": 0.05
+      },
+      "size": {
+        "min": 0.002,
+        "max": 0.03,
+        "step": 0.001
+      },
+      "brightness": {
+        "min": 0.1,
+        "max": 1.5,
+        "step": 0.05
+      },
+      "density": {
+        "min": 0.1,
+        "max": 1,
+        "step": 0.05
+      },
+      "ribbon": {
+        "min": 0,
+        "max": 1,
+        "step": 0.05
+      },
+      "flowScale": {
+        "min": 0.3,
+        "max": 4,
+        "step": 0.1
+      },
+      "damping": {
+        "min": 0.8,
+        "max": 0.99,
+        "step": 0.005
+      },
+      "gravity": {
+        "min": 0,
+        "max": 1.5,
+        "step": 0.05
+      },
+      "attractor": {
+        "min": 0,
+        "max": 2,
+        "step": 1
+      },
+      "audioFlow": {
+        "min": 0,
+        "max": 4,
+        "step": 0.1
+      },
+      "midSwirl": {
+        "min": 0,
+        "max": 2,
+        "step": 0.05
+      },
+      "trebleJitter": {
+        "min": 0,
+        "max": 2,
+        "step": 0.05
+      },
+      "sizePulse": {
+        "min": 0,
+        "max": 2,
+        "step": 0.05
+      },
+      "hueSpread": {
+        "min": 0,
+        "max": 180,
+        "step": 5
+      },
+      "speedColor": {
+        "min": 0,
+        "max": 1,
+        "step": 0.02
+      },
+      "sat": {
+        "min": 0,
+        "max": 1,
+        "step": 0.02
+      },
+      "spawnRadius": {
+        "min": 0.02,
+        "max": 0.6,
+        "step": 0.02
+      },
+      "vignette": {
+        "min": 0,
+        "max": 1,
+        "step": 0.05
+      },
+      "bgLevel": {
+        "min": 0,
+        "max": 0.15,
+        "step": 0.005
+      }
+    },
+    "particles": {
+      "hue": {
+        "min": 0,
+        "max": 360,
+        "step": 1
+      },
+      "saturation": {
+        "min": 0,
+        "max": 2,
+        "step": 0.01
+      },
+      "lightness": {
+        "min": 0,
+        "max": 2,
+        "step": 0.01
+      },
+      "density": {
+        "min": 4,
+        "max": 24,
+        "step": 1
+      },
+      "size": {
+        "min": 0.05,
+        "max": 0.4,
+        "step": 0.01
+      },
+      "speed": {
+        "min": 0,
+        "max": 1.5,
+        "step": 0.05
+      },
+      "direction": {
+        "min": 0,
+        "max": 360,
+        "step": 5
+      },
+      "beatDance": {
+        "min": 0,
+        "max": 1,
+        "step": 0.01
+      },
+      "sizePulse": {
+        "min": 0,
+        "max": 2,
+        "step": 0.05
+      },
+      "fly": {
+        "min": 0,
+        "max": 1,
+        "step": 1
+      },
+      "clump": {
+        "min": 0,
+        "max": 1,
+        "step": 0.02
+      },
+      "streak": {
+        "min": 0,
+        "max": 1.5,
+        "step": 0.02
+      },
+      "hotCore": {
+        "min": 0,
+        "max": 1,
+        "step": 0.02
+      },
+      "shootingStars": {
+        "min": 0,
+        "max": 1,
+        "step": 0.01
+      },
+      "constellation": {
+        "min": 0,
+        "max": 1,
+        "step": 0.01
+      },
+      "energyDrive": {
+        "min": 0,
+        "max": 2,
+        "step": 0.05
+      },
+      "wander": {
+        "min": 0,
+        "max": 1,
+        "step": 0.02
+      },
+      "wanderSpeed": {
+        "min": 0,
+        "max": 2,
+        "step": 0.05
+      },
+      "fill": {
+        "min": 0.2,
+        "max": 1,
+        "step": 0.02
+      },
+      "layers": {
+        "min": 1,
+        "max": 3,
+        "step": 1
+      },
+      "parallax": {
+        "min": 0,
+        "max": 1,
+        "step": 0.02
+      },
+      "hueVariance": {
+        "min": 0,
+        "max": 180,
+        "step": 5
+      },
+      "twinkle": {
+        "min": 0,
+        "max": 1,
+        "step": 0.02
+      },
+      "glow": {
+        "min": 0,
+        "max": 1,
+        "step": 0.02
+      },
+      "brightness": {
+        "min": 0.2,
+        "max": 1.5,
+        "step": 0.05
+      },
+      "beatFlash": {
+        "min": 0,
+        "max": 0.5,
+        "step": 0.01
+      },
+      "bgLevel": {
+        "min": 0,
+        "max": 0.1,
+        "step": 0.005
+      },
+      "vignette": {
+        "min": 0,
+        "max": 1,
+        "step": 0.05
+      },
+      "mirror": {
+        "min": 1,
+        "max": 12,
+        "step": 1
+      },
+      "sizeVar": {
+        "min": 0,
+        "max": 2,
+        "step": 0.05
+      },
+      "bandColor": {
+        "min": 0,
+        "max": 120,
+        "step": 5
+      },
+      "beatPop": {
+        "min": 0,
+        "max": 1.5,
+        "step": 0.05
+      }
+    },
+    "radial-burst": {
+      "hue": {
+        "min": 0,
+        "max": 360,
+        "step": 1
+      },
+      "hueSpread": {
+        "min": 0,
+        "max": 240,
+        "step": 1
+      },
+      "saturation": {
+        "min": 0,
+        "max": 2,
+        "step": 0.01
+      },
+      "lightness": {
+        "min": 0,
+        "max": 2,
+        "step": 0.01
+      },
+      "innerRadius": {
+        "min": 0.08,
+        "max": 0.35,
+        "step": 0.005
+      },
+      "symmetry": {
+        "min": 1,
+        "max": 8,
+        "step": 1
+      },
+      "angle": {
+        "min": 0,
+        "max": 360,
+        "step": 1
+      },
+      "rotSpeed": {
+        "min": -1,
+        "max": 1,
+        "step": 0.02
+      },
+      "glow": {
+        "min": 0,
+        "max": 1,
+        "step": 0.01
+      },
+      "peaks": {
+        "min": 0,
+        "max": 1,
+        "step": 1
+      },
+      "cover": {
+        "min": 0,
+        "max": 1,
+        "step": 1
+      },
+      "coverHue": {
+        "min": 0,
+        "max": 1,
+        "step": 1
+      },
+      "barLen": {
+        "min": 0.1,
+        "max": 0.4,
+        "step": 0.01
+      },
+      "ringBreathe": {
+        "min": 0,
+        "max": 0.4,
+        "step": 0.01
+      },
+      "coreSize": {
+        "min": 0.3,
+        "max": 0.95,
+        "step": 0.01
+      },
+      "corePump": {
+        "min": 0,
+        "max": 0.3,
+        "step": 0.01
+      },
+      "coreBeat": {
+        "min": 0,
+        "max": 0.2,
+        "step": 0.01
+      },
+      "wobBase": {
+        "min": 0,
+        "max": 0.1,
+        "step": 0.005
+      },
+      "wobAmp": {
+        "min": 0,
+        "max": 0.3,
+        "step": 0.005
+      },
+      "wobClamp": {
+        "min": 0,
+        "max": 0.25,
+        "step": 0.005
+      },
+      "spinBase": {
+        "min": 0,
+        "max": 1.5,
+        "step": 0.05
+      },
+      "spinEnergy": {
+        "min": 0,
+        "max": 1.5,
+        "step": 0.05
+      },
+      "coreBright": {
+        "min": 0,
+        "max": 0.8,
+        "step": 0.02
+      },
+      "detailRing": {
+        "min": 0,
+        "max": 1,
+        "step": 1
+      },
+      "detailPos": {
+        "min": 0.2,
+        "max": 0.9,
+        "step": 0.01
+      },
+      "beatBloom": {
+        "min": 0,
+        "max": 0.4,
+        "step": 0.01
+      },
+      "coverMix": {
+        "min": 0,
+        "max": 1,
+        "step": 0.02
+      },
+      "coverBright": {
+        "min": 0.1,
+        "max": 2,
+        "step": 0.05
+      },
+      "coverFit": {
+        "min": 0,
+        "max": 2,
+        "step": 1
+      },
+      "coverZoom": {
+        "min": 0.25,
+        "max": 3,
+        "step": 0.01
+      },
+      "coverX": {
+        "min": -0.5,
+        "max": 0.5,
+        "step": 0.005
+      },
+      "coverY": {
+        "min": -0.5,
+        "max": 0.5,
+        "step": 0.005
+      },
+      "rimBright": {
+        "min": 0,
+        "max": 1.5,
+        "step": 0.05
+      },
+      "vignette": {
+        "min": 0,
+        "max": 1.2,
+        "step": 0.05
+      }
+    },
+    "spectrum-bars": {
+      "hue": {
+        "min": 0,
+        "max": 360,
+        "step": 1
+      },
+      "hueSpread": {
+        "min": 0,
+        "max": 180,
+        "step": 1
+      },
+      "saturation": {
+        "min": 0,
+        "max": 2,
+        "step": 0.01
+      },
+      "lightness": {
+        "min": 0,
+        "max": 2,
+        "step": 0.01
+      },
+      "glow": {
+        "min": 0,
+        "max": 1,
+        "step": 0.01
+      },
+      "barGap": {
+        "min": 0,
+        "max": 0.6,
+        "step": 0.01
+      },
+      "beatZoom": {
+        "min": 0,
+        "max": 0.15,
+        "step": 0.005
+      },
+      "mirror": {
+        "min": 0,
+        "max": 1,
+        "step": 1
+      },
+      "peaks": {
+        "min": 0,
+        "max": 1,
+        "step": 1
+      },
+      "stereoSplit": {
+        "min": 0,
+        "max": 1,
+        "step": 0.01
+      },
+      "capShape": {
+        "min": 0,
+        "max": 2,
+        "step": 1
+      },
+      "reflect": {
+        "min": 0,
+        "max": 1,
+        "step": 0.01
+      },
+      "sway": {
+        "min": 0,
+        "max": 1,
+        "step": 0.01
+      },
+      "barHeight": {
+        "min": 0.3,
+        "max": 0.92,
+        "step": 0.01
+      },
+      "barSat": {
+        "min": 0,
+        "max": 1,
+        "step": 0.01
+      },
+      "barLift": {
+        "min": 0,
+        "max": 0.6,
+        "step": 0.01
+      },
+      "glowReach": {
+        "min": 2,
+        "max": 14,
+        "step": 0.5
+      },
+      "capBright": {
+        "min": 0,
+        "max": 1.5,
+        "step": 0.05
+      },
+      "bgLevel": {
+        "min": 0,
+        "max": 0.2,
+        "step": 0.005
+      },
+      "bgBassGlow": {
+        "min": 0,
+        "max": 0.2,
+        "step": 0.005
+      },
+      "beatFlash": {
+        "min": 0,
+        "max": 0.4,
+        "step": 0.01
+      },
+      "beatBright": {
+        "min": 0,
+        "max": 0.3,
+        "step": 0.01
+      },
+      "vignette": {
+        "min": 0,
+        "max": 1.2,
+        "step": 0.05
+      },
+      "reflectFade": {
+        "min": 1,
+        "max": 12,
+        "step": 0.5
+      },
+      "freqLo": {
+        "min": 0,
+        "max": 0.75,
+        "step": 0.01
+      },
+      "freqHi": {
+        "min": 0.25,
+        "max": 1,
+        "step": 0.01
+      }
+    },
+    "spectrum-scape": {
+      "hue": {
+        "min": 0,
+        "max": 360,
+        "step": 1
+      },
+      "heightScale": {
+        "min": 1,
+        "max": 18,
+        "step": 0.5
+      },
+      "camPitch": {
+        "min": 5,
+        "max": 85,
+        "step": 1
+      },
+      "camDist": {
+        "min": 8,
+        "max": 30,
+        "step": 0.5
+      },
+      "camSpin": {
+        "min": -60,
+        "max": 60,
+        "step": 1
+      },
+      "emissive": {
+        "min": 0,
+        "max": 2,
+        "step": 0.05
+      },
+      "layout": {
+        "min": 0,
+        "max": 2,
+        "step": 1
+      },
+      "barShape": {
+        "min": 0,
+        "max": 2,
+        "step": 1
+      },
+      "saturation": {
+        "min": 0,
+        "max": 2,
+        "step": 0.01
+      },
+      "lightness": {
+        "min": 0,
+        "max": 2,
+        "step": 0.01
+      },
+      "hotBeat": {
+        "min": 0,
+        "max": 2,
+        "step": 0.05
+      },
+      "bandGlow": {
+        "min": 0,
+        "max": 2,
+        "step": 0.05
+      },
+      "fov": {
+        "min": 25,
+        "max": 90,
+        "step": 1
+      },
+      "hueRange": {
+        "min": 0,
+        "max": 300,
+        "step": 5
+      },
+      "barWidth": {
+        "min": 0.1,
+        "max": 0.9,
+        "step": 0.02
+      },
+      "spacing": {
+        "min": 0.3,
+        "max": 1.2,
+        "step": 0.05
+      },
+      "light": {
+        "min": 0,
+        "max": 1.5,
+        "step": 0.05
+      },
+      "camYaw": {
+        "min": 0,
+        "max": 360,
+        "step": 1
+      },
+      "targetY": {
+        "min": 0,
+        "max": 4,
+        "step": 0.1
+      },
+      "driveHeight": {
+        "min": 0,
+        "max": 1.5,
+        "step": 0.05
+      },
+      "hotDrive": {
+        "min": 0,
+        "max": 2,
+        "step": 0.05
+      },
+      "glowBeat": {
+        "min": 0,
+        "max": 2,
+        "step": 0.05
+      },
+      "hotWindow": {
+        "min": 0.1,
+        "max": 1.5,
+        "step": 0.05
+      },
+      "hueLift": {
+        "min": 0,
+        "max": 60,
+        "step": 1
+      },
+      "fillLight": {
+        "min": 0,
+        "max": 1,
+        "step": 0.05
+      },
+      "ambientLight": {
+        "min": 0,
+        "max": 2,
+        "step": 0.05
+      },
+      "fogDensity": {
+        "min": 0,
+        "max": 0.2,
+        "step": 0.005
+      }
+    },
+    "synthwave": {
+      "hue": {
+        "min": 0,
+        "max": 360,
+        "step": 1
+      },
+      "gridHue": {
+        "min": 0,
+        "max": 360,
+        "step": 1
+      },
+      "speed": {
+        "min": 0,
+        "max": 3,
+        "step": 0.05
+      },
+      "react": {
+        "min": 0,
+        "max": 2,
+        "step": 0.05
+      },
+      "beatPulse": {
+        "min": 0,
+        "max": 1.5,
+        "step": 0.05
+      },
+      "sunR": {
+        "min": 0.1,
+        "max": 0.4,
+        "step": 0.01
+      },
+      "roadW": {
+        "min": 0,
+        "max": 1,
+        "step": 0.02
+      },
+      "skyline": {
+        "min": 0,
+        "max": 1,
+        "step": 0.01
+      },
+      "mountains": {
+        "min": 0,
+        "max": 1,
+        "step": 0.02
+      },
+      "gridGlow": {
+        "min": 0,
+        "max": 2,
+        "step": 0.05
+      },
+      "scan": {
+        "min": 0,
+        "max": 1,
+        "step": 0.02
+      },
+      "sunWarm": {
+        "min": 0,
+        "max": 2,
+        "step": 0.05
+      },
+      "sunY": {
+        "min": 0.1,
+        "max": 0.45,
+        "step": 0.01
+      },
+      "sunX": {
+        "min": -0.6,
+        "max": 0.6,
+        "step": 0.02
+      },
+      "scanCount": {
+        "min": 8,
+        "max": 56,
+        "step": 1
+      },
+      "scanWidth": {
+        "min": 0.1,
+        "max": 0.9,
+        "step": 0.01
+      },
+      "scanPhase": {
+        "min": 0,
+        "max": 1,
+        "step": 0.01
+      },
+      "sunRays": {
+        "min": 0,
+        "max": 1,
+        "step": 0.02
+      },
+      "roadLanes": {
+        "min": 0,
+        "max": 3,
+        "step": 1
+      },
+      "roadGlow": {
+        "min": 0,
+        "max": 2,
+        "step": 0.05
+      },
+      "skyDensity": {
+        "min": 0,
+        "max": 1,
+        "step": 0.01
+      },
+      "windows": {
+        "min": 0,
+        "max": 1,
+        "step": 0.01
+      },
+      "gridScale": {
+        "min": 0.2,
+        "max": 2,
+        "step": 0.05
+      },
+      "horizonY": {
+        "min": 0.35,
+        "max": 0.62,
+        "step": 0.01
+      },
+      "stars": {
+        "min": 0,
+        "max": 1,
+        "step": 1
+      },
+      "starDensity": {
+        "min": 0,
+        "max": 1,
+        "step": 0.02
+      },
+      "gridLock": {
+        "min": 0,
+        "max": 1,
+        "step": 1
+      },
+      "fog": {
+        "min": 0,
+        "max": 1.5,
+        "step": 0.05
+      },
+      "vignette": {
+        "min": 0,
+        "max": 1,
+        "step": 0.05
+      }
+    },
+    "tunnel-rings": {
+      "hue": {
+        "min": 0,
+        "max": 360,
+        "step": 1
+      },
+      "hueSpread": {
+        "min": 0,
+        "max": 240,
+        "step": 1
+      },
+      "colorFade": {
+        "min": 0,
+        "max": 1,
+        "step": 0.01
+      },
+      "speed": {
+        "min": 0.05,
+        "max": 2,
+        "step": 0.05
+      },
+      "rings": {
+        "min": 3,
+        "max": 14,
+        "step": 0.5
+      },
+      "spokes": {
+        "min": 4,
+        "max": 24,
+        "step": 2
+      },
+      "material": {
+        "min": 0,
+        "max": 3,
+        "step": 1
+      },
+      "beatPulse": {
+        "min": 0,
+        "max": 1,
+        "step": 0.01
+      },
+      "junction": {
+        "min": 0,
+        "max": 1,
+        "step": 0.01
+      },
+      "curve": {
+        "min": 0,
+        "max": 1,
+        "step": 0.02
+      },
+      "coverWall": {
+        "min": 0,
+        "max": 1,
+        "step": 0.01
+      },
+      "centerGlow": {
+        "min": 0,
+        "max": 1,
+        "step": 0.02
+      },
+      "cruiseFloor": {
+        "min": 0,
+        "max": 1,
+        "step": 0.02
+      },
+      "curveScale": {
+        "min": 0.25,
+        "max": 2,
+        "step": 0.05
+      },
+      "cruiseEnergy": {
+        "min": 0,
+        "max": 2,
+        "step": 0.05
+      },
+      "beatSpeed": {
+        "min": 0,
+        "max": 0.5,
+        "step": 0.02
+      },
+      "tileLevel": {
+        "min": 0,
+        "max": 0.4,
+        "step": 0.01
+      },
+      "tileSpectrum": {
+        "min": 0,
+        "max": 1,
+        "step": 0.02
+      },
+      "pulseWidth": {
+        "min": 2,
+        "max": 20,
+        "step": 0.5
+      },
+      "tileSat": {
+        "min": 0,
+        "max": 1,
+        "step": 0.02
+      },
+      "checker": {
+        "min": 0,
+        "max": 0.3,
+        "step": 0.01
+      },
+      "groutWidth": {
+        "min": 0.01,
+        "max": 0.2,
+        "step": 0.005
+      },
+      "groutLevel": {
+        "min": 0,
+        "max": 0.5,
+        "step": 0.01
+      },
+      "fogNear": {
+        "min": 0.005,
+        "max": 0.1,
+        "step": 0.005
+      },
+      "fogFar": {
+        "min": 0.3,
+        "max": 0.95,
+        "step": 0.05
+      },
+      "vignette": {
+        "min": 0,
+        "max": 1,
+        "step": 0.05
+      },
+      "mirror": {
+        "min": 1,
+        "max": 12,
+        "step": 1
+      },
+      "twist": {
+        "min": 0,
+        "max": 3,
+        "step": 0.05
+      },
+      "roundness": {
+        "min": 0,
+        "max": 1,
+        "step": 0.05
+      },
+      "surfaceWarp": {
+        "min": 0,
+        "max": 3,
+        "step": 0.05
+      },
+      "beatBright": {
+        "min": 0,
+        "max": 0.6,
+        "step": 0.02
+      }
+    },
+    "voice-orb": {
+      "hue": {
+        "min": 0,
+        "max": 360,
+        "step": 1
+      },
+      "size": {
+        "min": 0.08,
+        "max": 0.3,
+        "step": 0.005
+      },
+      "satellites": {
+        "min": 0,
+        "max": 3,
+        "step": 1
+      },
+      "ring": {
+        "min": 0,
+        "max": 1,
+        "step": 1
+      },
+      "ringStyle": {
+        "min": 0,
+        "max": 2,
+        "step": 1
+      },
+      "mirror": {
+        "min": 1,
+        "max": 12,
+        "step": 1
+      },
+      "texture": {
+        "min": 0,
+        "max": 1,
+        "step": 0.02
+      },
+      "response": {
+        "min": 0,
+        "max": 1,
+        "step": 0.01
+      },
+      "voiceFocus": {
+        "min": 0,
+        "max": 1,
+        "step": 0.02
+      },
+      "wobble": {
+        "min": 0,
+        "max": 1,
+        "step": 0.01
+      },
+      "sparkle": {
+        "min": 0,
+        "max": 1,
+        "step": 0.01
+      },
+      "flare": {
+        "min": 0,
+        "max": 1,
+        "step": 0.02
+      },
+      "rmsBlend": {
+        "min": 0,
+        "max": 1,
+        "step": 0.02
+      },
+      "growth": {
+        "min": 0,
+        "max": 1.4,
+        "step": 0.05
+      },
+      "idleBreath": {
+        "min": 0,
+        "max": 0.05,
+        "step": 0.002
+      },
+      "wobScale": {
+        "min": 0,
+        "max": 0.08,
+        "step": 0.002
+      },
+      "mode1": {
+        "min": 0,
+        "max": 2,
+        "step": 0.05
+      },
+      "mode2": {
+        "min": 0,
+        "max": 2,
+        "step": 0.05
+      },
+      "mode3": {
+        "min": 0,
+        "max": 2,
+        "step": 0.05
+      },
+      "coreGlow": {
+        "min": 0,
+        "max": 0.6,
+        "step": 0.02
+      },
+      "breathGlow": {
+        "min": 0,
+        "max": 0.6,
+        "step": 0.02
+      },
+      "rimGlow": {
+        "min": 0,
+        "max": 1,
+        "step": 0.02
+      },
+      "ringDist": {
+        "min": 1.1,
+        "max": 1.9,
+        "step": 0.05
+      },
+      "ringWave": {
+        "min": 0,
+        "max": 0.12,
+        "step": 0.005
+      },
+      "ringCount": {
+        "min": 8,
+        "max": 72,
+        "step": 1
+      },
+      "satSize": {
+        "min": 0.12,
+        "max": 0.45,
+        "step": 0.01
+      },
+      "satDist": {
+        "min": 1.3,
+        "max": 2.4,
+        "step": 0.05
+      },
+      "satOrbit": {
+        "min": 0,
+        "max": 1,
+        "step": 0.01
+      },
+      "sparkleScale": {
+        "min": 10,
+        "max": 80,
+        "step": 2
+      },
+      "bgLevel": {
+        "min": 0,
+        "max": 0.12,
+        "step": 0.005
+      },
+      "vignette": {
+        "min": 0,
+        "max": 1,
+        "step": 0.05
+      }
+    }
+  }
+}
