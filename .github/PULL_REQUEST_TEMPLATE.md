@@ -13,7 +13,7 @@
   - macOS/Linux: `shasum -a 256 looks/<entry-id>.bfpreset`
 - [ ] `contentUrl` (and `preview.url`) are pinned to the 40-hex commit SHA that adds the files.
 - [ ] Preview image included at `previews/<entry-id>.png` or `.jpg`, at most 512 KB, showing the content actually running.
-- [ ] The file is what Beatform exported — parameter values were not hand-edited afterwards. CI checks every value against its slider's step grid (see [schema/README.md](../schema/README.md)).
+- [ ] The file is what Beatform exported — parameter values were not hand-edited afterwards. CI checks every value against its slider's step grid (see [schema/README.md](schema/README.md)).
 - [ ] License chosen: `CC0-1.0` or `CC-BY-4.0` (no other values are accepted).
 - [ ] `author` is me, or the credited creator who agreed to this submission.
 - [ ] Tested in Beatform version: <!-- e.g. 2.68.1 --> — and `minAppVersion` reflects it.

@@ -214,6 +214,15 @@ function paramValuesIn(type, json) {
   return rows;
 }
 
+/* Own-property lookups, never bare indexing. Both the preset id and the
+ * parameter key come out of a submitted JSON file, so `toString`,
+ * `constructor` and friends would otherwise resolve against Object.prototype
+ * and read as "known" — which would quietly turn a bogus visual or an
+ * inherited key into a spec-shaped value with no `step`, and the grid check
+ * would skip it instead of refusing it. */
+const knownPreset = (p) => typeof p === "string" && Object.hasOwn(PARAM_SPECS, p);
+const knownParam = (p, key) => typeof key === "string" && Object.hasOwn(PARAM_SPECS[p], key);
+
 function checkParamGrid(where, type, relPath, bytes) {
   if (!PARAM_SPECS) return;
   let json;
@@ -236,7 +245,7 @@ function checkParamGrid(where, type, relPath, bytes) {
   const unknown = new Set();
   for (const row of rows) {
     for (const p of row.presetIds) {
-      if (typeof p !== "string" || !PARAM_SPECS[p]) unknown.add(String(p));
+      if (!knownPreset(p)) unknown.add(String(p));
     }
   }
   for (const p of unknown) {
@@ -246,9 +255,9 @@ function checkParamGrid(where, type, relPath, bytes) {
   }
 
   for (const { label, presetIds, key, value } of rows) {
-    const known = presetIds.filter((p) => typeof p === "string" && PARAM_SPECS[p]);
+    const known = presetIds.filter(knownPreset);
     if (known.length === 0) continue;
-    const defining = known.filter((p) => PARAM_SPECS[p][key]);
+    const defining = known.filter((p) => knownParam(p, key));
     if (defining.length === 0) {
       fail(
         `${where}: ${label} sets "${key}", which is not a parameter of ${known.join(" or ")} — the value would be carried in the file and do nothing`,
