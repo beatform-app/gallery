@@ -1,7 +1,7 @@
 {
-  "note": "GENERATED FILE - do not hand-edit. One entry per built-in Beatform preset, one entry per parameter, carrying the spec's min/max/step exactly as src/render/presets/* declares it. scripts/validate.mjs reads this to prove every parameter value in every entry's content lands on the step grid its slider snaps to. Regenerate with `node scripts/gen-param-specs.mjs <path-to-beatform-app-checkout>` and commit the result - see schema/README.md.",
-  "appVersion": "2.96.0",
-  "appCommit": "520e384cf5608b90d8446041decd95380792fe43",
+  "note": "GENERATED FILE - do not hand-edit. Five grids scripts/validate.mjs checks entry content against. `presets`: one entry per built-in Beatform preset, one entry per parameter, carrying the spec's min/max/step exactly as src/render/presets/* declares it. `post`: the post chain (POST_MOD_TARGETS). `motion`: the motion masters (MOTION_MASTER_SPECS). `modAmount`: the modulation-amount grid (MOD_AMOUNT_STEP). `syncTrio`: the sync-trio grid (SYNC_TRIO_STEP). Regenerate with `node scripts/gen-param-specs.mjs <path-to-beatform-app-checkout>` and commit the result - see schema/README.md.",
+  "appVersion": "2.99.0",
+  "appCommit": "2b01c245c6329a93dc18fa6afa8d45895dd12d3f",
   "presets": {
     "aurora": {
       "hue": {
@@ -12,7 +12,7 @@
       "bright": {
         "min": 0.2,
         "max": 2,
-        "step": 0.05
+        "step": 0.01
       },
       "react": {
         "min": 0,
@@ -77,7 +77,7 @@
       "drift": {
         "min": 0,
         "max": 1.5,
-        "step": 0.05
+        "step": 0.01
       },
       "reflect": {
         "min": 0,
@@ -127,7 +127,7 @@
       "bgGlow": {
         "min": 0,
         "max": 1,
-        "step": 0.02
+        "step": 0.01
       },
       "mirror": {
         "min": 1,
@@ -152,7 +152,7 @@
       "moonGlow": {
         "min": 0,
         "max": 1,
-        "step": 0.02
+        "step": 0.01
       }
     },
     "bass-circle": {
@@ -254,7 +254,7 @@
       "barGlow": {
         "min": 0,
         "max": 1,
-        "step": 0.02
+        "step": 0.01
       },
       "partDensity": {
         "min": 3,
@@ -284,7 +284,7 @@
       "coverMix": {
         "min": 0,
         "max": 1,
-        "step": 0.02
+        "step": 0.01
       },
       "coverBright": {
         "min": 0.1,
@@ -488,12 +488,12 @@
       "beatZoom": {
         "min": 0,
         "max": 1,
-        "step": 0.02
+        "step": 0.01
       },
       "flowSwirl": {
         "min": 0,
         "max": 1,
-        "step": 0.02
+        "step": 0.01
       },
       "thick": {
         "min": 0.005,
@@ -503,7 +503,7 @@
       "hueSpin": {
         "min": 0,
         "max": 1,
-        "step": 0.02
+        "step": 0.01
       },
       "hueDrift": {
         "min": 0,
@@ -630,12 +630,12 @@
       "spectrumColor": {
         "min": 0,
         "max": 1,
-        "step": 0.02
+        "step": 0.01
       },
       "gradStart": {
         "min": 0,
         "max": 1,
-        "step": 0.02
+        "step": 0.01
       },
       "gradEnd": {
         "min": 0.3,
@@ -645,12 +645,12 @@
       "litLevel": {
         "min": 0.2,
         "max": 0.8,
-        "step": 0.02
+        "step": 0.01
       },
       "hotBoost": {
         "min": 0,
         "max": 0.4,
-        "step": 0.02
+        "step": 0.01
       },
       "bassGlow": {
         "min": 0,
@@ -690,12 +690,12 @@
       "flicker": {
         "min": 0,
         "max": 0.6,
-        "step": 0.02
+        "step": 0.01
       },
       "panelVariance": {
         "min": 0,
         "max": 1,
-        "step": 0.02
+        "step": 0.01
       },
       "vignette": {
         "min": 0,
@@ -722,7 +722,7 @@
       "speed": {
         "min": 0.05,
         "max": 1,
-        "step": 0.05
+        "step": 0.01
       },
       "glow": {
         "min": 0,
@@ -737,7 +737,7 @@
       "gloss": {
         "min": 0,
         "max": 1,
-        "step": 0.02
+        "step": 0.01
       },
       "beatSwell": {
         "min": 0,
@@ -777,12 +777,12 @@
       "rimStart": {
         "min": 0.2,
         "max": 1,
-        "step": 0.02
+        "step": 0.01
       },
       "innerGrad": {
         "min": 0,
         "max": 1,
-        "step": 0.02
+        "step": 0.01
       },
       "hueField": {
         "min": 0,
@@ -909,7 +909,7 @@
       "depth": {
         "min": 0,
         "max": 1,
-        "step": 0.02
+        "step": 0.01
       },
       "hueRange": {
         "min": 0,
@@ -929,7 +929,7 @@
       "bassBright": {
         "min": 0,
         "max": 1,
-        "step": 0.02
+        "step": 0.01
       },
       "saturation": {
         "min": 0,
@@ -1178,7 +1178,7 @@
       "brightness": {
         "min": 0.1,
         "max": 1.5,
-        "step": 0.05
+        "step": 0.01
       },
       "density": {
         "min": 0.1,
@@ -1248,7 +1248,7 @@
       "spawnRadius": {
         "min": 0.02,
         "max": 0.6,
-        "step": 0.02
+        "step": 0.01
       },
       "vignette": {
         "min": 0,
@@ -1380,7 +1380,7 @@
       "glow": {
         "min": 0,
         "max": 1,
-        "step": 0.02
+        "step": 0.01
       },
       "brightness": {
         "min": 0.2,
@@ -1537,7 +1537,7 @@
       "coreBright": {
         "min": 0,
         "max": 0.8,
-        "step": 0.02
+        "step": 0.01
       },
       "detailRing": {
         "min": 0,
@@ -1557,7 +1557,7 @@
       "coverMix": {
         "min": 0,
         "max": 1,
-        "step": 0.02
+        "step": 0.01
       },
       "coverBright": {
         "min": 0.1,
@@ -1592,6 +1592,133 @@
       "vignette": {
         "min": 0,
         "max": 1.2,
+        "step": 0.05
+      }
+    },
+    "spectro-falls": {
+      "direction": {
+        "min": 0,
+        "max": 3,
+        "step": 1
+      },
+      "slices": {
+        "min": 8,
+        "max": 480,
+        "step": 1
+      },
+      "axis": {
+        "min": 0,
+        "max": 2,
+        "step": 1
+      },
+      "speed": {
+        "min": 2,
+        "max": 60,
+        "step": 1
+      },
+      "hue": {
+        "min": 0,
+        "max": 360,
+        "step": 1
+      },
+      "hueSpread": {
+        "min": -180,
+        "max": 180,
+        "step": 5
+      },
+      "saturation": {
+        "min": 0,
+        "max": 2,
+        "step": 0.01
+      },
+      "lightness": {
+        "min": 0,
+        "max": 2,
+        "step": 0.01
+      },
+      "prism": {
+        "min": 0,
+        "max": 1,
+        "step": 0.05
+      },
+      "quiet": {
+        "min": 0,
+        "max": 0.5,
+        "step": 0.005
+      },
+      "loud": {
+        "min": 0.3,
+        "max": 1,
+        "step": 0.01
+      },
+      "airLift": {
+        "min": 0,
+        "max": 1,
+        "step": 0.05
+      },
+      "beatBoost": {
+        "min": 0,
+        "max": 1,
+        "step": 0.05
+      },
+      "glow": {
+        "min": 0,
+        "max": 1.5,
+        "step": 0.05
+      },
+      "edge": {
+        "min": 0,
+        "max": 1.5,
+        "step": 0.05
+      },
+      "fade": {
+        "min": 0,
+        "max": 1,
+        "step": 0.05
+      },
+      "hotWhite": {
+        "min": 0,
+        "max": 1,
+        "step": 0.05
+      },
+      "spill": {
+        "min": 0,
+        "max": 1,
+        "step": 0.05
+      },
+      "floorLevel": {
+        "min": 0,
+        "max": 0.2,
+        "step": 0.005
+      },
+      "grid": {
+        "min": 0,
+        "max": 1,
+        "step": 0.05
+      },
+      "gridLines": {
+        "min": 2,
+        "max": 16,
+        "step": 1
+      },
+      "beatMarks": {
+        "min": 0,
+        "max": 1,
+        "step": 0.05
+      },
+      "axisFocus": {
+        "min": -1,
+        "max": 1,
+        "step": 0.05
+      },
+      "bassGlow": {
+        "min": 0,
+        "max": 0.5,
+        "step": 0.01
+      },
+      "vignette": {
+        "min": 0,
+        "max": 1,
         "step": 0.05
       }
     },
@@ -1694,7 +1821,7 @@
       "bgBassGlow": {
         "min": 0,
         "max": 0.2,
-        "step": 0.005
+        "step": 0.001
       },
       "beatFlash": {
         "min": 0,
@@ -1908,7 +2035,7 @@
       "mountains": {
         "min": 0,
         "max": 1,
-        "step": 0.02
+        "step": 0.01
       },
       "gridGlow": {
         "min": 0,
@@ -2075,7 +2202,7 @@
       "cruiseFloor": {
         "min": 0,
         "max": 1,
-        "step": 0.02
+        "step": 0.01
       },
       "curveScale": {
         "min": 0.25,
@@ -2100,7 +2227,7 @@
       "tileSpectrum": {
         "min": 0,
         "max": 1,
-        "step": 0.02
+        "step": 0.01
       },
       "pulseWidth": {
         "min": 2,
@@ -2110,7 +2237,7 @@
       "tileSat": {
         "min": 0,
         "max": 1,
-        "step": 0.02
+        "step": 0.01
       },
       "checker": {
         "min": 0,
@@ -2130,7 +2257,7 @@
       "fogNear": {
         "min": 0.005,
         "max": 0.1,
-        "step": 0.005
+        "step": 0.001
       },
       "fogFar": {
         "min": 0.3,
@@ -2165,7 +2292,7 @@
       "beatBright": {
         "min": 0,
         "max": 0.6,
-        "step": 0.02
+        "step": 0.01
       }
     },
     "voice-orb": {
@@ -2202,7 +2329,7 @@
       "texture": {
         "min": 0,
         "max": 1,
-        "step": 0.02
+        "step": 0.01
       },
       "response": {
         "min": 0,
@@ -2212,7 +2339,7 @@
       "voiceFocus": {
         "min": 0,
         "max": 1,
-        "step": 0.02
+        "step": 0.01
       },
       "wobble": {
         "min": 0,
@@ -2227,12 +2354,12 @@
       "flare": {
         "min": 0,
         "max": 1,
-        "step": 0.02
+        "step": 0.01
       },
       "rmsBlend": {
         "min": 0,
         "max": 1,
-        "step": 0.02
+        "step": 0.01
       },
       "growth": {
         "min": 0,
@@ -2325,5 +2452,69 @@
         "step": 0.05
       }
     }
+  },
+  "post": {
+    "exposure": {
+      "min": 0.2,
+      "max": 3,
+      "step": 0.01
+    },
+    "bloom": {
+      "min": 0,
+      "max": 1,
+      "step": 0.01
+    },
+    "bloomThreshold": {
+      "min": 0.4,
+      "max": 1.6,
+      "step": 0.01
+    },
+    "vignette": {
+      "min": 0,
+      "max": 1,
+      "step": 0.01
+    },
+    "chromatic": {
+      "min": 0,
+      "max": 1,
+      "step": 0.005
+    },
+    "grain": {
+      "min": 0,
+      "max": 0.5,
+      "step": 0.005
+    }
+  },
+  "motion": {
+    "rotation": {
+      "min": 0,
+      "max": 2,
+      "step": 0.05
+    },
+    "pulse": {
+      "min": 0,
+      "max": 2,
+      "step": 0.05
+    },
+    "detail": {
+      "min": 0,
+      "max": 1,
+      "step": 0.01
+    },
+    "spectrumSmooth": {
+      "min": 0,
+      "max": 1,
+      "step": 0.01
+    }
+  },
+  "modAmount": {
+    "min": -1,
+    "max": 1,
+    "step": 0.01
+  },
+  "syncTrio": {
+    "min": 0,
+    "max": 1,
+    "step": 0.002
   }
 }
