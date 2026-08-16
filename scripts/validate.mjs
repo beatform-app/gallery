@@ -53,18 +53,38 @@ const MAX_CONTENT_BYTES = 32 * 1024 * 1024;
 const MAX_PREVIEW_BYTES = 512 * 1024;
 
 /**
- * Snapshot of every built-in preset's parameter spec (min/max/step), taken
- * from the app's own src/render/presets/* by scripts/gen-param-specs.mjs.
- * Read here so CI can prove the STEP-GRID RULE below without cloning the app
- * or touching the network. A missing or unreadable snapshot is a hard
- * failure, not a skipped check — a rule that silently stops running is worse
- * than no rule.
+ * Snapshot of five grids, taken from the app's own source by
+ * scripts/gen-param-specs.mjs: every built-in preset's parameter spec
+ * (min/max/step), the post chain, the motion masters, the modulation-amount
+ * grid and the sync-trio grid. Read here so CI can prove the STEP-GRID RULE
+ * below without cloning the app or touching the network. A missing or
+ * unreadable snapshot is a hard failure, not a skipped check — a rule that
+ * silently stops running is worse than no rule. All five are validated
+ * first and assigned together, at the end of the try — a snapshot missing
+ * even one of them fails ALL of them closed, rather than running four grids
+ * and silently skipping the fifth.
  */
 let PARAM_SPECS = null;
+let POST_SPECS = null;
+let MOTION_SPECS = null;
+let MOD_AMOUNT_SPEC = null;
+let SYNC_TRIO_SPEC = null;
 try {
   const raw = JSON.parse(readFileSync(join(repoRoot, "schema", "param-specs.json"), "utf8"));
   if (typeof raw?.presets !== "object" || raw.presets === null) throw new Error("no presets map");
+  if (typeof raw?.post !== "object" || raw.post === null) throw new Error("no post map");
+  if (typeof raw?.motion !== "object" || raw.motion === null) throw new Error("no motion map");
+  if (typeof raw?.modAmount !== "object" || raw.modAmount === null || !(raw.modAmount.step > 0)) {
+    throw new Error("no modAmount spec");
+  }
+  if (typeof raw?.syncTrio !== "object" || raw.syncTrio === null || !(raw.syncTrio.step > 0)) {
+    throw new Error("no syncTrio spec");
+  }
   PARAM_SPECS = raw.presets;
+  POST_SPECS = raw.post;
+  MOTION_SPECS = raw.motion;
+  MOD_AMOUNT_SPEC = raw.modAmount;
+  SYNC_TRIO_SPEC = raw.syncTrio;
 } catch (e) {
   fail(`schema/param-specs.json is missing or unreadable (${e.message}) — regenerate it with scripts/gen-param-specs.mjs`);
 }
@@ -158,15 +178,25 @@ function verifyLocalFile(where, relPath, expectedSha, expectedSize, maxBytes, la
  * with no range, step or spec lookup anywhere in the path — so the file is
  * accepted, installs cleanly, and only misbehaves under the user's hand.
  * Beatform enforces the same rule on its own in-code styles
- * (src/render/presetStyles.test.ts); this is that rule applied to the
- * content this registry ships. The math below is deliberately the same.
+ * (src/render/presetStyles.test.ts) and on its own factory theme pack
+ * (factoryThemes.test.ts's post/motion/amount checks, ParamsPanel.tsx's
+ * sync-trio sliders); this is that rule applied to the content this
+ * registry ships. The math below is deliberately the same.
  *
- * DELIBERATE SCOPE. Only parameters of the visual presets are checked —
- * the specs in the app's src/render/presets/*. The post chain, the motion
- * masters and modulation route amounts have their own separate tables and
- * are NOT covered here; the snapshot carries min/max as well as step, so
- * a range rule is a small addition if one is ever wanted, but it is not
- * this rule.
+ * FIVE GRIDS. Track C shipped this rule covering preset params only — the
+ * specs in the app's src/render/presets/*. C5(b) (owner decision #6,
+ * 2026-08-16, "extend") adds four more: the post chain (POST_MOD_TARGETS),
+ * the motion masters (MOTION_MASTER_SPECS), modulation route amounts
+ * (MOD_AMOUNT_STEP — one flat grid, not per param) and the sync-trio
+ * sliders (SYNC_TRIO_STEP — also one flat grid). Extending was byte-neutral:
+ * every one of the 18 live entries was already legal on all five grids
+ * before this rule started checking them (proven by actually running it
+ * against them, not assumed from the app-side work that made it true — see
+ * the PR this landed in). STILL not covered, deliberately: everything else
+ * a SyncSettings object can carry — contrast, freqMin, freqMax, shapeMerge,
+ * shapeRound, mode, and the three spectrum-display enums are not on the
+ * sync-trio grid in the app either, so checking them here would be
+ * inventing a rule the app itself does not enforce.
  * ------------------------------------------------------------------ */
 
 /** Where parameter values live inside a `.bfpreset` / `.bftheme`. Returns
@@ -278,6 +308,132 @@ function checkParamGrid(where, type, relPath, bytes) {
       fail(
         `${where}: ${label} sets ${presetId}.${key} to ${value}, off its ${spec.step} step grid — the slider snaps to ${nearest}, so the entry changes the first time a user touches that control`,
       );
+    }
+  }
+
+  // C5(b): the post chain, motion masters, modulation-amount and sync-trio
+  // grids — reusing the SAME "json" already parsed and proven above to have
+  // a preset/document object, so a malformed file only fails that check
+  // once, not once per grid.
+  checkSliderGrids(where, type, relPath, json);
+}
+
+/**
+ * Generic value-on-grid check shared by every rule below — identical
+ * rounding and identical message shape to the per-preset-param check above,
+ * so "legal" means the same thing everywhere in this file.
+ */
+function gridCheck(where, label, value, spec) {
+  if (!Number.isFinite(value)) {
+    fail(`${where}: ${label} is ${JSON.stringify(value)}, which is not a finite number`);
+    return;
+  }
+  if (!(spec.step > 0)) return;
+  // The same rounding a native range input applies to its own value.
+  const steps = (value - spec.min) / spec.step;
+  if (Math.abs(steps - Math.round(steps)) < 1e-6) return;
+  const nearest = Number((spec.min + Math.round(steps) * spec.step).toFixed(10));
+  fail(
+    `${where}: ${label} is ${value}, off its ${spec.step} step grid — the slider snaps to ${nearest}, so the entry changes the first time a user touches that control`,
+  );
+}
+
+/**
+ * SyncSettings (src/audio/types.ts) carries far more than the sync trio:
+ * mode, contrast, freqMin, freqMax, shapeMerge, shapeRound, three
+ * spectrum-display enums. Only smooth/attack/release share SYNC_TRIO_STEP,
+ * so this checks exactly those three BY NAME — an ALLOWLIST, unlike the
+ * post/motion checks below, because an unlisted key here (contrast, say) is
+ * a real, valid SyncSettings field that simply is not on this grid, not a
+ * mistake worth refusing. attack/release are optional on SyncSettings
+ * itself; a key this object does not have is silently skipped — presence is
+ * a different rule's job, this one only judges values that exist.
+ */
+const SYNC_TRIO_KEYS = ["smooth", "attack", "release"];
+function checkSyncTrio(where, relPath, label, sync) {
+  if (!SYNC_TRIO_SPEC || typeof sync !== "object" || sync === null || Array.isArray(sync)) return;
+  for (const key of SYNC_TRIO_KEYS) {
+    if (!Object.hasOwn(sync, key)) continue;
+    gridCheck(where, `content "${relPath}" ${label}.${key}`, sync[key], SYNC_TRIO_SPEC);
+  }
+}
+
+/**
+ * post / motion / modAmount / sync-trio — the four grids C5(b) adds
+ * alongside the preset-param rule above. Takes the SAME parsed `json`
+ * checkParamGrid already validated (a look has a "preset" object, a theme a
+ * "document" object).
+ *
+ * post/motion: PostSettings/MotionSettings (src/render/types.ts) are CLOSED
+ * interfaces — every numeric key is on its slider's grid ("tonemap" is
+ * post's one boolean toggle, deliberately excluded from POST_MOD_TARGETS,
+ * and is skipped here too), so an unrecognized key is refused with the same
+ * voice as an unrecognized preset param: it would sit in the file and do
+ * nothing. Looks carry neither field (UserPreset has params + sync only),
+ * so this only ever runs for themes.
+ *
+ * modsByPreset: only each route's "amount" is on a grid — id, source,
+ * param, curve, attack, release and muted are unrelated to this rule and
+ * are left alone (route.param validity is the app's own territory —
+ * factoryThemes.test.ts's "drives something that exists" check — not this
+ * registry's). Looks cannot carry modulation routes at all.
+ *
+ * sync: preset.sync on a look, every entry of document.syncByPreset on a
+ * theme — see checkSyncTrio for why this one is an allowlist rather than a
+ * known-key check.
+ */
+function checkSliderGrids(where, type, relPath, json) {
+  if (type === "look") {
+    checkSyncTrio(where, relPath, "preset.sync", json?.preset?.sync);
+    return;
+  }
+  const doc = json?.document;
+  if (typeof doc !== "object" || doc === null) return;
+
+  if (POST_SPECS && typeof doc.post === "object" && doc.post !== null && !Array.isArray(doc.post)) {
+    for (const [key, value] of Object.entries(doc.post)) {
+      if (key === "tonemap") continue;
+      if (!Object.hasOwn(POST_SPECS, key)) {
+        fail(
+          `${where}: content "${relPath}" sets post.${key}, which is not a post-chain slider — the value would be carried in the file and do nothing`,
+        );
+        continue;
+      }
+      gridCheck(where, `content "${relPath}" post.${key}`, value, POST_SPECS[key]);
+    }
+  }
+
+  if (MOTION_SPECS && typeof doc.motion === "object" && doc.motion !== null && !Array.isArray(doc.motion)) {
+    for (const [key, value] of Object.entries(doc.motion)) {
+      if (!Object.hasOwn(MOTION_SPECS, key)) {
+        fail(
+          `${where}: content "${relPath}" sets motion.${key}, which is not a motion master — the value would be carried in the file and do nothing`,
+        );
+        continue;
+      }
+      gridCheck(where, `content "${relPath}" motion.${key}`, value, MOTION_SPECS[key]);
+    }
+  }
+
+  if (MOD_AMOUNT_SPEC && typeof doc.modsByPreset === "object" && doc.modsByPreset !== null) {
+    for (const [presetId, routes] of Object.entries(doc.modsByPreset)) {
+      if (!Array.isArray(routes)) continue;
+      routes.forEach((route, i) => {
+        if (typeof route !== "object" || route === null || !Object.hasOwn(route, "amount")) return;
+        const id = typeof route.id === "string" ? ` (${route.id})` : "";
+        gridCheck(
+          where,
+          `content "${relPath}" modsByPreset.${presetId}[${i}]${id} amount`,
+          route.amount,
+          MOD_AMOUNT_SPEC,
+        );
+      });
+    }
+  }
+
+  if (typeof doc.syncByPreset === "object" && doc.syncByPreset !== null) {
+    for (const [presetId, sync] of Object.entries(doc.syncByPreset)) {
+      checkSyncTrio(where, relPath, `syncByPreset.${presetId}`, sync);
     }
   }
 }

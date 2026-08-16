@@ -1,7 +1,12 @@
 #!/usr/bin/env node
-// Regenerates schema/param-specs.json — the snapshot of every built-in
-// Beatform preset's parameter spec (min/max/step) that scripts/validate.mjs
-// reads to prove entry content sits on the app's own slider grids.
+// Regenerates schema/param-specs.json — the snapshot of five grids
+// scripts/validate.mjs checks entry content against: every built-in
+// Beatform preset's parameter spec (min/max/step), the post chain
+// (POST_MOD_TARGETS), the motion masters (MOTION_MASTER_SPECS), the
+// modulation-amount grid (MOD_AMOUNT_STEP) and the sync-trio grid
+// (SYNC_TRIO_STEP). The last four joined the preset map in C5(b) — owner
+// decision #6, 2026-08-16 ("extend"); see schema/README.md for what each
+// one covers and what it deliberately does not.
 //
 //   node scripts/gen-param-specs.mjs <path-to-beatform-app-checkout>
 //
@@ -22,10 +27,11 @@
 // scripts/gallery-submit.mjs loads its modules exactly this way and says so
 // at greater length.
 //
-// The specs are read through the app's real `presets` registry and its real
-// `allParams()`, never re-declared here: a snapshot that restated the
-// numbers by hand could drift from the sliders it claims to describe, which
-// is the precise failure the rule exists to catch.
+// Every grid is read through the app's real exports — `presets` and
+// `allParams()`, `POST_MOD_TARGETS`, `MOTION_MASTER_SPECS`,
+// `MOD_AMOUNT_STEP`, `SYNC_TRIO_STEP` — never re-declared here: a snapshot
+// that restated the numbers by hand could drift from the sliders it claims
+// to describe, which is the precise failure the rule exists to catch.
 
 import { writeFileSync } from "node:fs";
 import { execFileSync } from "node:child_process";
@@ -75,11 +81,18 @@ const server = await createServer({
   ssr: {},
 });
 
-let presetsMod, typesMod, versionMod;
+let presetsMod, typesMod, versionMod, modMatrixMod, audioTypesMod;
 try {
   presetsMod = await server.ssrLoadModule("/src/render/presets/index.ts");
   typesMod = await server.ssrLoadModule("/src/render/types.ts");
   versionMod = await server.ssrLoadModule("/src/version.ts");
+  // C5(b): POST_MOD_TARGETS and MOTION_MASTER_SPECS live in types.ts,
+  // already loaded above. The amount and sync-trio steps live in their own
+  // modules — each as light a load as types.ts itself (a handful of types,
+  // consts and pure functions; no React, no DOM, no localStorage touch),
+  // confirmed by reading both files rather than assumed.
+  modMatrixMod = await server.ssrLoadModule("/src/state/modMatrix.ts");
+  audioTypesMod = await server.ssrLoadModule("/src/audio/types.ts");
 } finally {
   // middlewareMode + never calling .listen() means no port was ever bound;
   // this is a one-shot module loader, not a dev server.
@@ -87,8 +100,10 @@ try {
 }
 
 const { presets } = presetsMod;
-const { allParams } = typesMod;
+const { allParams, POST_MOD_TARGETS, MOTION_MASTER_SPECS } = typesMod;
 const { APP_VERSION } = versionMod;
+const { MOD_AMOUNT_STEP } = modMatrixMod;
+const { SYNC_TRIO_STEP } = audioTypesMod;
 
 let appCommit = "";
 try {
@@ -104,23 +119,56 @@ for (const preset of [...presets].sort((a, b) => (a.id < b.id ? -1 : a.id > b.id
   out[preset.id] = specs;
 }
 
+// POST_MOD_TARGETS / MOTION_MASTER_SPECS are already ParamSpec-shaped
+// (key/label/min/max/step/default) — trimmed to min/max/step here, exactly
+// like the preset map above, so validate.mjs reads one uniform shape
+// everywhere instead of two.
+const post = {};
+for (const spec of POST_MOD_TARGETS) post[spec.key] = { min: spec.min, max: spec.max, step: spec.step };
+
+const motion = {};
+for (const spec of MOTION_MASTER_SPECS) motion[spec.key] = { min: spec.min, max: spec.max, step: spec.step };
+
+// modAmount / syncTrio are each ONE flat grid, not a per-key map: a
+// ModRoute's `amount` (whatever it targets) and a SyncSettings'
+// smooth/attack/release (whatever preset it belongs to) each share a single
+// step. Only the step itself is read from the app (MOD_AMOUNT_STEP,
+// SYNC_TRIO_STEP) — the -1..1 / 0..1 bounds are the modulation-math and
+// clamp01 CONTRACTS, not slider tuning, so unlike a preset's min/max they
+// are not behind an exported spec object to read: they live inline as
+// `Math.min(1, Math.max(-1, r.amount))` in validModRoutes
+// (src/state/modMatrix.ts) and as `clamp01` in sanitizeSync
+// (src/audio/types.ts), and are stable by construction the same way those
+// two clamps are.
+const modAmount = { min: -1, max: 1, step: MOD_AMOUNT_STEP };
+const syncTrio = { min: 0, max: 1, step: SYNC_TRIO_STEP };
+
 const doc = {
   note:
-    "GENERATED FILE - do not hand-edit. One entry per built-in Beatform preset, " +
+    "GENERATED FILE - do not hand-edit. Five grids scripts/validate.mjs checks " +
+    "entry content against. `presets`: one entry per built-in Beatform preset, " +
     "one entry per parameter, carrying the spec's min/max/step exactly as " +
-    "src/render/presets/* declares it. scripts/validate.mjs reads this to prove " +
-    "every parameter value in every entry's content lands on the step grid its " +
-    "slider snaps to. Regenerate with `node scripts/gen-param-specs.mjs " +
-    "<path-to-beatform-app-checkout>` and commit the result - see schema/README.md.",
+    "src/render/presets/* declares it. `post`: the post chain " +
+    "(POST_MOD_TARGETS). `motion`: the motion masters (MOTION_MASTER_SPECS). " +
+    "`modAmount`: the modulation-amount grid (MOD_AMOUNT_STEP). `syncTrio`: " +
+    "the sync-trio grid (SYNC_TRIO_STEP). Regenerate with `node " +
+    "scripts/gen-param-specs.mjs <path-to-beatform-app-checkout>` and commit " +
+    "the result - see schema/README.md.",
   appVersion: APP_VERSION,
   appCommit,
   presets: out,
+  post,
+  motion,
+  modAmount,
+  syncTrio,
 };
 
 const dest = join(repoRoot, "schema", "param-specs.json");
 writeFileSync(dest, JSON.stringify(doc, null, 2) + "\n");
 const keys = Object.values(out).reduce((a, s) => a + Object.keys(s).length, 0);
 console.log(
-  `schema/param-specs.json: ${Object.keys(out).length} presets, ${keys} parameter specs ` +
+  `schema/param-specs.json: ${Object.keys(out).length} presets, ${keys} parameter specs, ` +
+    `${Object.keys(post).length} post, ${Object.keys(motion).length} motion, ` +
+    `modAmount step ${modAmount.step}, syncTrio step ${syncTrio.step} ` +
     `(Beatform ${APP_VERSION} @ ${appCommit.slice(0, 12)})`,
 );
