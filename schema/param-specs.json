@@ -1,7 +1,7 @@
 {
   "note": "GENERATED FILE - do not hand-edit. Five grids scripts/validate.mjs checks entry content against. `presets`: one entry per built-in Beatform preset, one entry per parameter, carrying the spec's min/max/step exactly as src/render/presets/* declares it. `post`: the post chain (POST_MOD_TARGETS). `motion`: the motion masters (MOTION_MASTER_SPECS). `modAmount`: the modulation-amount grid (MOD_AMOUNT_STEP). `syncTrio`: the sync-trio grid (SYNC_TRIO_STEP). Regenerate with `node scripts/gen-param-specs.mjs <path-to-beatform-app-checkout>` and commit the result - see schema/README.md.",
-  "appVersion": "2.99.0",
-  "appCommit": "2b01c245c6329a93dc18fa6afa8d45895dd12d3f",
+  "appVersion": "2.102.0",
+  "appCommit": "c37cb38fea8a2a4cd29147db79af42645d4fdbfb",
   "presets": {
     "aurora": {
       "hue": {
@@ -556,6 +556,138 @@
         "step": 0.01
       }
     },
+    "gatefold": {
+      "layout": {
+        "min": 0,
+        "max": 2,
+        "step": 1
+      },
+      "artSize": {
+        "min": 0.5,
+        "max": 1.5,
+        "step": 0.05
+      },
+      "reflection": {
+        "min": 0,
+        "max": 1,
+        "step": 0.05
+      },
+      "hue": {
+        "min": 0,
+        "max": 360,
+        "step": 1
+      },
+      "hueSpread": {
+        "min": -180,
+        "max": 180,
+        "step": 5
+      },
+      "saturation": {
+        "min": 0,
+        "max": 2,
+        "step": 0.01
+      },
+      "lightness": {
+        "min": 0,
+        "max": 2,
+        "step": 0.01
+      },
+      "drift": {
+        "min": 0,
+        "max": 1,
+        "step": 0.05
+      },
+      "breathe": {
+        "min": 0,
+        "max": 1,
+        "step": 0.05
+      },
+      "beatZoom": {
+        "min": 0,
+        "max": 1,
+        "step": 0.05
+      },
+      "flare": {
+        "min": 0,
+        "max": 1,
+        "step": 0.05
+      },
+      "glow": {
+        "min": 0,
+        "max": 1.5,
+        "step": 0.05
+      },
+      "skirt": {
+        "min": 0,
+        "max": 1,
+        "step": 0.05
+      },
+      "wash": {
+        "min": 0,
+        "max": 1,
+        "step": 0.05
+      },
+      "cover": {
+        "min": 0,
+        "max": 1,
+        "step": 1
+      },
+      "coverHue": {
+        "min": 0,
+        "max": 1,
+        "step": 1
+      },
+      "border": {
+        "min": 0,
+        "max": 1,
+        "step": 0.05
+      },
+      "coverFit": {
+        "min": 0,
+        "max": 2,
+        "step": 1
+      },
+      "coverZoom": {
+        "min": 0.25,
+        "max": 3,
+        "step": 0.01
+      },
+      "coverX": {
+        "min": -0.5,
+        "max": 0.5,
+        "step": 0.005
+      },
+      "coverY": {
+        "min": -0.5,
+        "max": 0.5,
+        "step": 0.005
+      },
+      "roomLevel": {
+        "min": 0,
+        "max": 0.2,
+        "step": 0.005
+      },
+      "grain": {
+        "min": 0,
+        "max": 1,
+        "step": 0.05
+      },
+      "reflectFade": {
+        "min": 0.1,
+        "max": 1,
+        "step": 0.05
+      },
+      "emblem": {
+        "min": 0,
+        "max": 1,
+        "step": 0.05
+      },
+      "vignette": {
+        "min": 0,
+        "max": 1,
+        "step": 0.05
+      }
+    },
     "led-matrix": {
       "display": {
         "min": 0,
@@ -696,6 +828,133 @@
         "min": 0,
         "max": 1,
         "step": 0.01
+      },
+      "vignette": {
+        "min": 0,
+        "max": 1,
+        "step": 0.05
+      }
+    },
+    "lyric-stage": {
+      "layout": {
+        "min": 0,
+        "max": 2,
+        "step": 1
+      },
+      "size": {
+        "min": 0.6,
+        "max": 1.6,
+        "step": 0.05
+      },
+      "context": {
+        "min": 0,
+        "max": 1,
+        "step": 0.05
+      },
+      "tilt": {
+        "min": -1,
+        "max": 1,
+        "step": 0.05
+      },
+      "hue": {
+        "min": 0,
+        "max": 360,
+        "step": 1
+      },
+      "hueSpread": {
+        "min": -180,
+        "max": 180,
+        "step": 5
+      },
+      "saturation": {
+        "min": 0,
+        "max": 2,
+        "step": 0.01
+      },
+      "lightness": {
+        "min": 0,
+        "max": 2,
+        "step": 0.01
+      },
+      "drift": {
+        "min": 0,
+        "max": 1,
+        "step": 0.05
+      },
+      "entrance": {
+        "min": 0,
+        "max": 1,
+        "step": 0.05
+      },
+      "beatPunch": {
+        "min": 0,
+        "max": 1,
+        "step": 0.05
+      },
+      "wordGlow": {
+        "min": 0,
+        "max": 1.5,
+        "step": 0.05
+      },
+      "chromaSplit": {
+        "min": 0,
+        "max": 1,
+        "step": 0.05
+      },
+      "glow": {
+        "min": 0,
+        "max": 1.5,
+        "step": 0.05
+      },
+      "flare": {
+        "min": 0,
+        "max": 1,
+        "step": 0.05
+      },
+      "ghostBars": {
+        "min": 0,
+        "max": 1,
+        "step": 0.05
+      },
+      "stageLevel": {
+        "min": 0,
+        "max": 0.2,
+        "step": 0.005
+      },
+      "unsungDim": {
+        "min": 0.1,
+        "max": 1,
+        "step": 0.05
+      },
+      "contextScale": {
+        "min": 0.3,
+        "max": 0.8,
+        "step": 0.05
+      },
+      "greekRows": {
+        "min": 2,
+        "max": 5,
+        "step": 1
+      },
+      "glowReach": {
+        "min": 0,
+        "max": 1,
+        "step": 0.05
+      },
+      "bassStage": {
+        "min": 0,
+        "max": 1,
+        "step": 0.05
+      },
+      "flutter": {
+        "min": 0,
+        "max": 1,
+        "step": 0.05
+      },
+      "rehearse": {
+        "min": 0,
+        "max": 1,
+        "step": 0.05
       },
       "vignette": {
         "min": 0,
@@ -1887,7 +2146,7 @@
       },
       "layout": {
         "min": 0,
-        "max": 2,
+        "max": 3,
         "step": 1
       },
       "barShape": {
@@ -1989,6 +2248,11 @@
         "min": 0,
         "max": 0.2,
         "step": 0.005
+      },
+      "terrainSmooth": {
+        "min": 0,
+        "max": 1,
+        "step": 0.05
       }
     },
     "synthwave": {
