@@ -1,7 +1,7 @@
 {
   "note": "GENERATED FILE - do not hand-edit. Five grids scripts/validate.mjs checks entry content against. `presets`: one entry per built-in Beatform preset, one entry per parameter, carrying the spec's min/max/step exactly as src/render/presets/* declares it. `post`: the post chain (POST_MOD_TARGETS). `motion`: the motion masters (MOTION_MASTER_SPECS). `modAmount`: the modulation-amount grid (MOD_AMOUNT_STEP). `syncTrio`: the sync-trio grid (SYNC_TRIO_STEP). Regenerate with `node scripts/gen-param-specs.mjs <path-to-beatform-app-checkout>` and commit the result - see schema/README.md.",
-  "appVersion": "2.102.0",
-  "appCommit": "c37cb38fea8a2a4cd29147db79af42645d4fdbfb",
+  "appVersion": "2.103.0",
+  "appCommit": "d2fc725c9cdb3ad5737e0e90610bf91df46af360",
   "presets": {
     "aurora": {
       "hue": {
@@ -1391,6 +1391,128 @@
         "min": 0,
         "max": 360,
         "step": 1
+      }
+    },
+    "overgrowth": {
+      "form": {
+        "min": 0,
+        "max": 4,
+        "step": 1
+      },
+      "scale": {
+        "min": 0.4,
+        "max": 2,
+        "step": 0.05
+      },
+      "speed": {
+        "min": 0.2,
+        "max": 1.8,
+        "step": 0.05
+      },
+      "hue": {
+        "min": 0,
+        "max": 360,
+        "step": 1
+      },
+      "hueSpread": {
+        "min": -180,
+        "max": 180,
+        "step": 5
+      },
+      "saturation": {
+        "min": 0,
+        "max": 2,
+        "step": 0.01
+      },
+      "lightness": {
+        "min": 0,
+        "max": 2,
+        "step": 0.01
+      },
+      "duo": {
+        "min": 0,
+        "max": 1,
+        "step": 0.05
+      },
+      "growth": {
+        "min": 0,
+        "max": 1,
+        "step": 0.05
+      },
+      "etch": {
+        "min": 0,
+        "max": 1,
+        "step": 0.05
+      },
+      "surge": {
+        "min": 0,
+        "max": 1,
+        "step": 0.05
+      },
+      "seeds": {
+        "min": 0,
+        "max": 1,
+        "step": 0.05
+      },
+      "glow": {
+        "min": 0,
+        "max": 1.5,
+        "step": 0.05
+      },
+      "relief": {
+        "min": 0,
+        "max": 1.5,
+        "step": 0.05
+      },
+      "flow": {
+        "min": -1,
+        "max": 1,
+        "step": 0.05
+      },
+      "contrast": {
+        "min": 0,
+        "max": 1,
+        "step": 0.05
+      },
+      "seedSize": {
+        "min": 0.3,
+        "max": 3,
+        "step": 0.05
+      },
+      "barSurge": {
+        "min": 0,
+        "max": 1,
+        "step": 0.05
+      },
+      "paper": {
+        "min": 0,
+        "max": 1,
+        "step": 0.05
+      },
+      "haze": {
+        "min": 0,
+        "max": 1,
+        "step": 0.05
+      },
+      "floorLevel": {
+        "min": 0,
+        "max": 0.2,
+        "step": 0.005
+      },
+      "bassGlow": {
+        "min": 0,
+        "max": 0.5,
+        "step": 0.01
+      },
+      "vignette": {
+        "min": 0,
+        "max": 1,
+        "step": 0.05
+      },
+      "grain": {
+        "min": 0,
+        "max": 1,
+        "step": 0.05
       }
     },
     "particle-flow": {
